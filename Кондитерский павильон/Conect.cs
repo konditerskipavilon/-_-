@@ -5,7 +5,7 @@ namespace Кондитерский_павильон
 {
     class Conect
     {
-        public static string myConnectionString = "server=185.154.75.232 ;user=root;database=kondit1;password=Qq414213543;"; // Database = rudenko; Data Source = 127.0.0.1; UserId = root; Password = Qwerty123;
+        public static string myConnectionString = "server=192.168.1.10 ;user=root;database=kondit1;password=Qq414213543;";
         public static MySqlConnection connection = new MySqlConnection(myConnectionString);
 
         public static DataSet ds = new DataSet();
