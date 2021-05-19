@@ -60,6 +60,7 @@ namespace Кондитерский_павильон
             this.button1.TabIndex = 1;
             this.button1.Text = "Сохранить";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label1
             // 
@@ -111,6 +112,7 @@ namespace Кондитерский_павильон
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(236, 119);
             this.dataGridView1.TabIndex = 4;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // button2
             // 
@@ -123,6 +125,7 @@ namespace Кондитерский_павильон
             this.button2.TabIndex = 5;
             this.button2.Text = "Удалить";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // groupBox2
             // 
@@ -149,6 +152,8 @@ namespace Кондитерский_павильон
             this.MinimumSize = new System.Drawing.Size(624, 207);
             this.Name = "Склад_сырья_типы";
             this.Text = "Склад_сырья_добавление_типа";
+            this.Activated += new System.EventHandler(this.Склад_сырья_типы_Activated);
+            this.Load += new System.EventHandler(this.Склад_сырья_типы_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

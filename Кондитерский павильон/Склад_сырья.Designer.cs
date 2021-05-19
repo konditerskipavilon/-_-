@@ -73,6 +73,7 @@ namespace Кондитерский_павильон
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(366, 174);
             this.dataGridView1.TabIndex = 4;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // button3
             // 
@@ -112,6 +113,7 @@ namespace Кондитерский_павильон
             this.MinimumSize = new System.Drawing.Size(487, 237);
             this.Name = "Склад_сырья";
             this.Text = "Склад_сырья_загрузка";
+            this.Activated += new System.EventHandler(this.Склад_сырья_Activated);
             this.Load += new System.EventHandler(this.Склад_сырья_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);

@@ -187,12 +187,6 @@
     <Compile Include="Склад_сырья_списание.Designer.cs">
       <DependentUpon>Склад_сырья_списание.cs</DependentUpon>
     </Compile>
-    <Compile Include="Склад_сырья_удалить_оставленно_на_всякий_случай.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Склад_сырья_удалить_оставленно_на_всякий_случай.Designer.cs">
-      <DependentUpon>Склад_сырья_удалить_оставленно_на_всякий_случай.cs</DependentUpon>
-    </Compile>
     <Compile Include="Склад_сырья_типы.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -283,9 +277,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Склад_сырья_списание.resx">
       <DependentUpon>Склад_сырья_списание.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Склад_сырья_удалить_оставленно_на_всякий_случай.resx">
-      <DependentUpon>Склад_сырья_удалить_оставленно_на_всякий_случай.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Склад_сырья_Добавление_на_Склад.resx">
       <DependentUpon>Склад_сырья_Добавление_на_Склад.cs</DependentUpon>

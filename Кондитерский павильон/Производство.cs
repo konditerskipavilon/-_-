@@ -18,9 +18,9 @@ namespace Кондитерский_павильон
             InitializeComponent();
         }
 
-        private void Производство_Load(object sender, EventArgs e)
+        public void Производство_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         private void button3_Click(object sender, EventArgs e)
