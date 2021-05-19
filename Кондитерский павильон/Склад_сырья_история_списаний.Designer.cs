@@ -44,6 +44,7 @@ namespace Кондитерский_павильон
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(358, 174);
             this.dataGridView1.TabIndex = 7;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // button2
             // 
@@ -56,8 +57,9 @@ namespace Кондитерский_павильон
             this.button2.TabIndex = 9;
             this.button2.Text = "Удалить запись";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // склад_сырья_история_списаний
+            // Склад_сырья_история_списаний
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -66,8 +68,9 @@ namespace Кондитерский_павильон
             this.Controls.Add(this.button2);
             this.Controls.Add(this.dataGridView1);
             this.MinimumSize = new System.Drawing.Size(479, 237);
-            this.Name = "склад_сырья_история_списаний";
+            this.Name = "Склад_сырья_история_списаний";
             this.Text = "списание";
+            this.Activated += new System.EventHandler(this.Склад_сырья_история_списаний_Activated);
             this.Load += new System.EventHandler(this.склад_сырья_списание_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);

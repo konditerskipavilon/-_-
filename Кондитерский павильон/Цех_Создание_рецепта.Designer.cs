@@ -38,12 +38,11 @@ namespace Кондитерский_павильон
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -129,7 +128,7 @@ namespace Кондитерский_павильон
             // 
             this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(51)))), ((int)(((byte)(187)))));
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Location = new System.Drawing.Point(323, 47);
+            this.button4.Location = new System.Drawing.Point(357, 47);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(137, 23);
             this.button4.TabIndex = 18;
@@ -147,16 +146,6 @@ namespace Кондитерский_павильон
             this.button5.TabIndex = 19;
             this.button5.Text = "Удалить ингридиент";
             this.button5.UseVisualStyleBackColor = false;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Red;
-            this.label4.Location = new System.Drawing.Point(132, 11);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(282, 13);
-            this.label4.TabIndex = 20;
-            this.label4.Text = "можно добавить редактирование если времяя блудет";
             // 
             // comboBox2
             // 
@@ -185,12 +174,14 @@ namespace Кондитерский_павильон
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Добавить ингридиент в рецепт";
             // 
-            // textBox2
+            // label5
             // 
-            this.textBox2.Location = new System.Drawing.Point(182, 50);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 21;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(168, 34);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(137, 13);
+            this.label5.TabIndex = 23;
+            this.label5.Text = "Необходимое количество";
             // 
             // label3
             // 
@@ -201,14 +192,12 @@ namespace Кондитерский_павильон
             this.label3.TabIndex = 22;
             this.label3.Text = "Выберете ингридиент";
             // 
-            // label5
+            // textBox2
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(168, 34);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(137, 13);
-            this.label5.TabIndex = 23;
-            this.label5.Text = "Необходимое количество";
+            this.textBox2.Location = new System.Drawing.Point(182, 50);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(100, 20);
+            this.textBox2.TabIndex = 21;
             // 
             // Цех_Создание_рецепта
             // 
@@ -217,7 +206,6 @@ namespace Кондитерский_павильон
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(221)))), ((int)(((byte)(248)))));
             this.ClientSize = new System.Drawing.Size(536, 321);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.groupBox1);
             this.MinimumSize = new System.Drawing.Size(552, 360);
             this.Name = "Цех_Создание_рецепта";
@@ -229,7 +217,6 @@ namespace Кондитерский_павильон
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -241,7 +228,6 @@ namespace Кондитерский_павильон
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.ComboBox comboBox2;

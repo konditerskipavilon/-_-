@@ -83,6 +83,7 @@ namespace Кондитерский_павильон
             this.MinimumSize = new System.Drawing.Size(473, 242);
             this.Name = "Цех_Рецепты";
             this.Text = "Рецепты";
+            this.Load += new System.EventHandler(this.Цех_Рецепты_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
