@@ -82,6 +82,7 @@ namespace Кондитерский_павильон
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(12, 12);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(500, 386);
             this.dataGridView1.TabIndex = 5;
             // 
@@ -98,7 +99,7 @@ namespace Кондитерский_павильон
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // Склад_готовой_продукции
+            // Магазин_Склад_готовой_продукции
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -110,7 +111,7 @@ namespace Кондитерский_павильон
             this.Controls.Add(this.button2);
             this.Controls.Add(this.dataGridView1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Склад_готовой_продукции";
+            this.Name = "Магазин_Склад_готовой_продукции";
             this.Text = "Склад_готовой_продукции";
             this.Load += new System.EventHandler(this.Склад_готовой_продукции_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

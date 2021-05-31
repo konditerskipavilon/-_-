@@ -50,8 +50,7 @@ namespace Кондитерский_павильон
             if (result == DialogResult.No) { return; }
             string sql;
             sql = "DELETE FROM write_off WHERE id = '" + dataGridView1.Rows[n].Cells["Системный номер"].Value + "';";
-            Conect.Modification_Execute(sql);
-            if (Conect.vipravlen == true)
+            if (Conect.Modification_Execute(sql))
             {
                 Conect.ds.Tables["write_off"].Rows.RemoveAt(n);
                 dataGridView1.AutoResizeColumns();
@@ -76,7 +75,11 @@ namespace Кондитерский_павильон
             {
                 n = dataGridView1.CurrentRow.Index;
             }
-            catch (System.NullReferenceException) { }
+            catch(System.NullReferenceException) 
+            {
+                MessageBox.Show("Пелемени");
+            }
         }
+
     }
 }

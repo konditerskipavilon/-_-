@@ -82,6 +82,7 @@ namespace Кондитерский_павильон
             this.button3.TabIndex = 4;
             this.button3.Text = "Создать";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // Производство_создание_торговой_точки
             // 

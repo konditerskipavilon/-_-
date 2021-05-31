@@ -137,6 +137,12 @@
     <Compile Include="Цех_заявка.Designer.cs">
       <DependentUpon>Цех_заявка.cs</DependentUpon>
     </Compile>
+    <Compile Include="Цех_просмотр_рецепта.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Цех_просмотр_рецепта.Designer.cs">
+      <DependentUpon>Цех_просмотр_рецепта.cs</DependentUpon>
+    </Compile>
     <Compile Include="Цех_Рецепты.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -229,12 +235,6 @@
     <Compile Include="Цех_списание.Designer.cs">
       <DependentUpon>Цех_списание.cs</DependentUpon>
     </Compile>
-    <Compile Include="Цех_Типы.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Цех_Типы.Designer.cs">
-      <DependentUpon>Цех_Типы.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Авторизация.resx">
       <DependentUpon>Авторизация.cs</DependentUpon>
     </EmbeddedResource>
@@ -272,6 +272,9 @@
     <EmbeddedResource Include="Цех_заявка.resx">
       <DependentUpon>Цех_заявка.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Цех_просмотр_рецепта.resx">
+      <DependentUpon>Цех_просмотр_рецепта.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Цех_Рецепты.resx">
       <DependentUpon>Цех_Рецепты.cs</DependentUpon>
     </EmbeddedResource>
@@ -301,9 +304,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Цех_списание.resx">
       <DependentUpon>Цех_списание.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Цех_Типы.resx">
-      <DependentUpon>Цех_Типы.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

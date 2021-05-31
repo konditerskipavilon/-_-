@@ -81,7 +81,7 @@ namespace Кондитерский_павильон
             string sql;
             sql = "DELETE FROM unit WHERE name_unit = '" + dataGridView1.Rows[n].Cells["Название"].Value + "';";
             Conect.Modification_Execute(sql);
-            if (Conect.vipravlen == true)
+            if (Conect.Modification_Execute(sql))
             {
                 Conect.ds.Tables["unit"].Rows.RemoveAt(n);
                 dataGridView1.AutoResizeColumns();

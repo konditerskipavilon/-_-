@@ -28,9 +28,9 @@ namespace Кондитерский_павильон
 
         public bool delete = true;
 
-        private void save()
+        private bool Save()
         {
-            string kod = null;
+            string kod;
             kod = dateTimePicker1.Text +" "+ dateTimePicker2.Text;
             string kod2 = kod.Replace(".", "/");
             string sql;
@@ -52,49 +52,62 @@ namespace Кондитерский_павильон
                 }
                 catch (MySql.Data.MySqlClient.MySqlException)
                 {
-                    MessageBox.Show("Неверный тип данных.", "Ошибка!");
-                    Conect.connection.Close(); return;
+                    Conect.connection.Close();
+                    return false;
                 }
                 Conect.connection.Close();
-
+                return true;
             }
             else
             {
-                MessageBox.Show("Поле количество не должно быть пустым", "Ошибка");
+                
+                return false;
             }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            
-            int a, b;
-            int kod;
-            a = Convert.ToInt32(maskedTextBox2.Text);
-            b = Convert.ToInt32(Склад_сырья.quantity);
-
-
-            if (a < b)
+            if (maskedTextBox2.Text != "" && maskedTextBox1.Text != "")
             {
-                string sql;
+                Double a, b;
+                Double kod;
+                a = Convert.ToDouble(maskedTextBox2.Text);
+                b = Convert.ToDouble(Склад_сырья.quantity);
 
-                kod = b - a;
+                if (Save())
+                {
+                    if (a < b)
+                    {
+                        string sql;
 
-                sql = "UPDATE raw_materials SET quantity = " + kod + " WHERE id = " + Склад_сырья.id + ";";
-                Conect.Modification_Execute(sql);
-                //delite
-                //update
+                        kod = b - a;
+
+                        sql = "UPDATE raw_materials SET quantity = " + kod + " WHERE id = " + Склад_сырья.id + ";";
+                        Conect.Modification_Execute(sql);
+                        //delite
+                        //update
+                    }
+                    else
+                    {
+                        string sql;
+                        delete = false;
+                        sql = "UPDATE raw_materials SET quantity = 0 WHERE id = " + Склад_сырья.id + ";";
+                        Conect.Modification_Execute(sql);
+                        //delite
+                    }
+
+                    Program.склад_Сырья.Sql();
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Неверный тип данных", "Ошибка");
+                }
             }
             else
             {
-                string sql;
-                delete = false;
-                sql = "DELETE FROM raw_materials WHERE id = " + Склад_сырья.id + ";";
-                Conect.Modification_Execute(sql);
-                //delite
+                MessageBox.Show("Укажите количество.", "Ошибка");
             }
-            save();
-            Program.склад_Сырья.sql();
-            this.Close();
         }
 
         private void maskedTextBox2_MouseDown(object sender, MouseEventArgs e)

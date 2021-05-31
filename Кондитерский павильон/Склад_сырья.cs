@@ -59,13 +59,13 @@ namespace Кондитерский_павильон
 
         public void Склад_сырья_Load(object sender, EventArgs e)
         {
-            sql();
+            Sql();
         }
 
-        public void sql()
+        public void Sql()
         {
             string sql;
-            sql = "select id as 'Системный номер', name as 'Название', type as 'Тип',quantity  as 'Количество',unit  as 'Единица измерения', price as 'Цена' from raw_materials;";
+            sql = "select id as 'Системный номер', name as 'Название', type as 'Тип',quantity  as 'Количество',unit  as 'Единица измерения', price as 'Цена' from raw_materials where quantity != '0';";
 
             Conect.Table_Fill("raw_materials", sql);
             dataGridView1.DataSource = Conect.ds.Tables["raw_materials"];

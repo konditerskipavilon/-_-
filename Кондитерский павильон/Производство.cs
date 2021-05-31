@@ -20,7 +20,26 @@ namespace Кондитерский_павильон
 
         public void Производство_Load(object sender, EventArgs e)
         {
-            
+            Sql();
+        }
+        public static void Message()
+        {
+            MessageBox.Show("Нет соединения с базой данных","Ошибка");
+        }
+
+        public void Sql()
+        {
+            string sql;
+            sql = "select id as 'Системный номер', title as 'Название', Address as 'Адрес'from shop;";
+
+            Conect.Table_Fill("shop", sql);
+            dataGridView1.DataSource = Conect.ds.Tables["shop"];
+            dataGridView1.BackgroundColor = SystemColors.Control;
+            dataGridView1.BorderStyle = BorderStyle.None;
+            dataGridView1.RowHeadersVisible = false;
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -63,5 +82,6 @@ namespace Кондитерский_павильон
             Производство_создание_торговой_точки Производство_создание_торговой_точки = new Производство_создание_торговой_точки();
             Производство_создание_торговой_точки.Show();
         }
+
     }
 }

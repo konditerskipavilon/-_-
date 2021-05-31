@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -35,6 +36,33 @@ namespace Кондитерский_павильон
         private void label2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            string sql;
+            if (textBox1.Text != "" )
+            {
+                sql = "INSERT INTO `shop` (`title`, `Address`) VALUES ('" + textBox1.Text + "','" + textBox2.Text + "');";
+                MySqlCommand command = new MySqlCommand(sql, Conect.connection);
+                Conect.connection.Open();
+                try
+                {
+                    command.ExecuteNonQuery();
+
+                }
+                catch (MySql.Data.MySqlClient.MySqlException)
+                {
+                    MessageBox.Show("Невозможно добавить тип с названием которое уже создано, измените название типа.", "Ошибка!");
+                    Conect.connection.Close(); return;
+                }
+                Conect.connection.Close();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Поле название не должно быть пустым", "Ошибка");
+            }
         }
     }
 }

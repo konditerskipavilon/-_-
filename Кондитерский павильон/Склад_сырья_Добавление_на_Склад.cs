@@ -64,7 +64,7 @@ namespace Кондитерский_павильон
                     Conect.connection.Close(); return;
                 }
                 Conect.connection.Close();
-                Program.склад_Сырья.sql();
+                Program.склад_Сырья.Sql();
                 this.Close();
             }
             else

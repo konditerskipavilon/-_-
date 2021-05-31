@@ -87,8 +87,7 @@ namespace Кондитерский_павильон
             if (result == DialogResult.No) { return; }
             string sql;
             sql = "DELETE FROM type WHERE name_type = '" + dataGridView1.Rows[n].Cells["Название"].Value + "';";
-            Conect.Modification_Execute(sql);
-            if (Conect.vipravlen == true)
+            if (Conect.Modification_Execute(sql))
             {
                 Conect.ds.Tables["type"].Rows.RemoveAt(n);
                 dataGridView1.AutoResizeColumns();

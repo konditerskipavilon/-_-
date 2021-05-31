@@ -5,8 +5,7 @@ namespace Кондитерский_павильон
 {
     class Conect
     {
-        public static bool vipravlen;
-        public static string myConnectionString = "server=192.168.1.10 ;user=root;database=kondit;password=Qq414213543;"; 
+        public static string myConnectionString = "server=192.168.1.10 ;user=root;database=kondit;password=Qq414213543;";
         public static MySqlConnection connection = new MySqlConnection(myConnectionString);
 
         public static DataSet ds = new DataSet();
@@ -17,7 +16,14 @@ namespace Кондитерский_павильон
                 ds.Tables[name].Clear();
             MySqlDataAdapter da;
             da = new MySqlDataAdapter(sql, connection);
-            da.Fill(ds, name);
+            try
+            {
+                da.Fill(ds, name);
+            } catch (MySql.Data.MySqlClient.MySqlException)
+            {
+                Производство.Message();
+
+            }
             connection.Close();
         }
 
@@ -29,15 +35,15 @@ namespace Кондитерский_павильон
             try
             {
                 command.ExecuteNonQuery();
-                vipravlen = true;
             }
             catch (MySql.Data.MySqlClient.MySqlException)
             {
-                vipravlen = false;
                 connection.Close(); return false;
             }
             connection.Close();
             return true;
         }
+        
+
     }
 }
