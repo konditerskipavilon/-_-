@@ -1,12 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Кондитерский_павильон
@@ -44,13 +37,13 @@ namespace Кондитерский_павильон
 
         private void button2_Click(object sender, EventArgs e)
         {
-            string kod = null;
+            string kod = null, kod2;
             kod = maskedTextBox2.Text + "." + maskedTextBox3.Text;
-
+            kod2 = maskedTextBox1.Text + "." + maskedTextBox4.Text;
             string sql;
             if (textBox1.Text != "" && maskedTextBox1.Text != "" && comboBox1.Text != "" && comboBox2.Text != "")
             {
-                sql = "INSERT INTO `raw_materials` (`name`, `type`, `quantity`, `unit`, `price`) VALUES ('" + textBox1.Text + "', '" + comboBox1.Text + "', '" + maskedTextBox1.Text + "', '" + comboBox2.Text + "', " + kod + ");";
+                sql = "INSERT INTO `raw_materials` (`name`, `type`, `quantity`, `unit`, `price`) VALUES ('" + textBox1.Text + "', '" + comboBox1.Text + "', '" + kod2 + "', '" + comboBox2.Text + "', " + kod + ");";
                 MySqlCommand command = new MySqlCommand(sql, Conect.connection);
                 Conect.connection.Open();
                 try
@@ -64,7 +57,7 @@ namespace Кондитерский_павильон
                     Conect.connection.Close(); return;
                 }
                 Conect.connection.Close();
-                Program.склад_Сырья.Sql();
+                Производство.Sql_raw_materials();
                 this.Close();
             }
             else

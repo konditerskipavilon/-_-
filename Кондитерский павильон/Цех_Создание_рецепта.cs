@@ -1,16 +1,10 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Кондитерский_павильон
-{ 
+{
     public partial class Цех_Создание_рецепта : Form
     {
         public Цех_Создание_рецепта()
@@ -21,10 +15,29 @@ namespace Кондитерский_павильон
         //////////////////
         int IdReciepes;
         int n = -1;
+        double price;
+        double sum;
+        bool clouse = false;
+        bool сancel = false;
+        string name;
         //////////////////
+        
         private void Цех_Создание_рецепта_Load(object sender, EventArgs e)
         {
-            
+
+            if(Цех_Рецепты.editing)
+            {
+                IdReciepes = Цех_Рецепты.editing_id;
+                name = Цех_Рецепты.name;
+                groupBox2.Visible = true;
+                SqlSelect();
+                cost_price();
+            }
+            else
+            {
+                IdReciepes = 0;
+                groupBox2.Visible = false;
+            }
         }
 
         private bool IfNameExists(string name)
@@ -47,13 +60,12 @@ namespace Кондитерский_павильон
                 return;
             }
 
-            string sql = "select ingredient_kode as 'Системный номер', name as 'Название', type as 'Тип', description  as 'Описание' from recipes where type = 'Полуфабрикат';";
-            Conect.Table_Fill("recipes_box", sql);
+            name = textBox1.Text;
 
 
             if (textBox1.Text != "" && comboBox1.Text != "")
             {
-                sql = "INSERT INTO `recipes` (`name`, `type`, `description`) VALUES ('" + textBox1.Text + "','" + comboBox1.Text + "','" + textBox3.Text + "');";
+                string sql = "INSERT INTO `recipes` (`name`, `type`, `description`) VALUES ('" + textBox1.Text + "','" + comboBox1.Text + "','" + textBox3.Text + "');";
                 MySqlCommand command = new MySqlCommand(sql, Conect.connection);
                 Conect.connection.Open();
                 try
@@ -77,8 +89,9 @@ namespace Кондитерский_павильон
                     if (Conect.ds.Tables["recipes_kod"].Rows[i]["name"].ToString() == textBox1.Text)
                         IdReciepes = Convert.ToInt32(Conect.ds.Tables["recipes_kod"].Rows[i]["ingredient_kode"]);
                 }
-
+                
                 SqlSelect();
+                clouse = true;
             }
             else
             {
@@ -91,7 +104,8 @@ namespace Кондитерский_павильон
         {
             if (comboBox3.Text == "Полуфабрикат")
             {
-
+                string sql = $"select ingredient_kode as 'Системный номер', name as 'Название', type as 'Тип', description  as 'Описание' from recipes where type = 'Полуфабрикат' AND name != '{name}';";
+                Conect.Table_Fill("recipes_box", sql);
                 comboBox2.Items.Clear();
                 for (int i = 0; i < Conect.ds.Tables["recipes_box"].Rows.Count; i++)
 
@@ -105,15 +119,17 @@ namespace Кондитерский_павильон
                 for (int i = 0; i < Conect.ds.Tables["raw_materials_box"].Rows.Count; i++)
 
                     comboBox2.Items.Add(Conect.ds.Tables["raw_materials_box"].Rows[i]["Название"].ToString());
+
             }
         }
 
         private void AddIngredient_Click(object sender, EventArgs e)
         {
-            if (comboBox2.Text != "")
+            if (comboBox2.Text != "" && maskedTextBox1.Text != "")
             {
                 string id = null;
-                string kod_quantity = maskedTextBox1.Text + "." + maskedTextBox2.Text;
+                string kod_quantity = maskedTextBox1.Text + "," + maskedTextBox2.Text;
+                price = 0;
 
                 if (comboBox3.Text == "Полуфабрикат")
                 {
@@ -122,6 +138,11 @@ namespace Кондитерский_павильон
                         if (Conect.ds.Tables["recipes_box"].Rows[i]["Название"].ToString() == comboBox2.Text)
                             id = Conect.ds.Tables["recipes_box"].Rows[i]["Системный номер"].ToString();
                     }
+                    for (int i = 0; i < Conect.ds.Tables["recipes"].Rows.Count; i++)
+                    {
+                        if (Conect.ds.Tables["recipes"].Rows[i]["Название"].ToString() == comboBox2.Text)
+                            price = Convert.ToDouble(Conect.ds.Tables["recipes"].Rows[i]["Себестоимость"]);
+                    }
                 }
                 else
                 {
@@ -129,12 +150,21 @@ namespace Кондитерский_павильон
                     {
                         if (Conect.ds.Tables["raw_materials_box"].Rows[i]["Название"].ToString() == comboBox2.Text)
                             id = Conect.ds.Tables["raw_materials_box"].Rows[i]["Системный номер"].ToString();
+
+                    }
+                    for (int i = 0; i < Conect.ds.Tables["raw_materials_box"].Rows.Count; i++)
+                    {
+                        if (Conect.ds.Tables["raw_materials_box"].Rows[i]["Название"].ToString() == comboBox2.Text)
+                            price = Convert.ToDouble(Conect.ds.Tables["raw_materials_box"].Rows[i]["Цена"]);
+
                     }
                 }
 
+                price *= Convert.ToDouble(kod_quantity);
+
                 if (comboBox3.Text == "Полуфабрикат")
                 {
-                    string sql = $"INSERT INTO `kondit`.`raw_materials-recipes` (`ingredient`, `semi-finished_product`, `quantity`, `price`) VALUES ('{IdReciepes}', '{id}', '{kod_quantity}', '999');";
+                    string sql = $"INSERT INTO `kondit`.`raw_materials-recipes` (`ingredient`, `semi-finished_product`, `quantity`, `price`) VALUES ('{IdReciepes}', '{id}', '{kod_quantity.ToString().Replace(",", ".")}', '{price.ToString().Replace(",", ".")}');";
                     MySqlCommand command = new MySqlCommand(sql, Conect.connection);
                     Conect.connection.Open();
                     try
@@ -152,7 +182,7 @@ namespace Кондитерский_павильон
                 }
                 else
                 {
-                    string sql = $"INSERT INTO `kondit`.`raw_materials-recipes` (`ingredient`, `raw_materials_id`, `quantity`, `price`) VALUES ('{IdReciepes}', '{id}', '{kod_quantity}', '998');";
+                    string sql = $"INSERT INTO `kondit`.`raw_materials-recipes` (`ingredient`, `raw_materials_id`, `quantity`, `price`) VALUES ('{IdReciepes}', '{id}', '{kod_quantity.ToString().Replace(",", ".")}', '{price.ToString().Replace(",", ".")}');";
                     MySqlCommand command = new MySqlCommand(sql, Conect.connection);
                     Conect.connection.Open();
                     try
@@ -168,7 +198,8 @@ namespace Кондитерский_павильон
                     Conect.connection.Close();
 
                 }
-                SqlSelect();
+                Цех.Sql_raw_materials_recipes();
+                cost_price();
             }
             else
             {
@@ -178,34 +209,11 @@ namespace Кондитерский_павильон
 
         private void SqlSelect()
         {
-            string sql;
-
-            sql = "select " +
-            "`raw_materials-recipes`.id as 'Системный номер', "+
-            "recipes.name as 'Название', "+
-            "recipes.type as 'Тип', "+
-            "`raw_materials-recipes`.quantity as 'Количество', "+
-            "`raw_materials-recipes`.price as 'Цена' "+
-            "from "+
-            "`raw_materials-recipes` "+
-            "inner join recipes on recipes.ingredient_kode = `raw_materials-recipes`.`semi-finished_product` "+
-            "where "+
-            $"ingredient = '{ IdReciepes}' "+
-            "union "+
-            "select "+
-            "`raw_materials-recipes`.id as 'Системный номер', "+
-            "raw_materials.name as 'Название', "+
-            "raw_materials.type as 'Тип', "+
-            "`raw_materials-recipes`.quantity as 'Количество', "+
-            "`raw_materials-recipes`.price as 'Цена' "+
-            "from "+
-            "`raw_materials-recipes` "+
-            "inner join raw_materials on raw_materials.id = `raw_materials-recipes`.raw_materials_id " +
-            "where " +
-            $"ingredient = '{ IdReciepes}';";
-
-            Conect.Table_Fill("raw_materials-recipes", sql);
+            Conect.ds.Tables["raw_materials-recipes"].DefaultView.RowFilter = "[ingredient] = " + IdReciepes + "";
             dataGridView2.DataSource = Conect.ds.Tables["raw_materials-recipes"];
+            dataGridView2.Columns[0].Visible = false;
+            dataGridView2.Columns[4].Visible = false;
+            dataGridView2.Columns[5].Visible = false;
             dataGridView2.BackgroundColor = SystemColors.Control;
             dataGridView2.BorderStyle = BorderStyle.None;
             dataGridView2.RowHeadersVisible = false;
@@ -214,6 +222,11 @@ namespace Кондитерский_павильон
         }
 
         private void button3_Click(object sender, EventArgs e)
+        {
+            Delete_all();
+        }
+
+        private void Delete_all()
         {
             string message;
             try
@@ -232,15 +245,13 @@ namespace Кондитерский_павильон
             sql = $"DELETE FROM `raw_materials-recipes` WHERE ingredient = '{IdReciepes}';";
             if (Conect.Modification_Execute(sql))
             {
-                SqlSelect();
+                Цех.Sql_raw_materials_recipes();
                 dataGridView2.AutoResizeColumns();
                 dataGridView2.CurrentCell = null;
                 n = -1;
+                cost_price();
             }
-            else
-            {
-                MessageBox.Show("Данный  уже используется.  Для удаления, удалите все существующие записи использующие данный параметр", "Ошибка");
-            }
+
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -266,6 +277,8 @@ namespace Кондитерский_павильон
                 dataGridView2.AutoResizeColumns();
                 dataGridView2.CurrentCell = null;
                 n = -1;
+                cost_price();
+                Цех.Sql_raw_materials_recipes();
             }
             else
             {
@@ -277,6 +290,13 @@ namespace Кондитерский_павильон
         {
             dataGridView2.AutoResizeColumns();
             dataGridView2.CurrentCell = null;
+
+            string sql = "SELECT name_unit as 'Название' FROM unit;";//
+            Conect.Table_Fill("unit", sql);
+            comboBox4.Items.Clear();
+            for (int i = 0; i < Conect.ds.Tables["unit"].Rows.Count; i++)
+
+                comboBox4.Items.Add(Conect.ds.Tables["unit"].Rows[i]["Название"].ToString());
         }
 
         private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -285,7 +305,9 @@ namespace Кондитерский_павильон
             {
                 n = dataGridView2.CurrentRow.Index;
             }
-            catch (System.NullReferenceException) { }
+            catch (System.NullReferenceException)
+            {
+            }
         }
 
         private void maskedTextBox1_MouseClick(object sender, MouseEventArgs e)
@@ -293,14 +315,83 @@ namespace Кондитерский_павильон
             maskedTextBox1.Text = null;
         }
 
-        private void maskedTextBox2_MouseClick(object sender, MouseEventArgs e)
-        {
-            maskedTextBox2.Text = null;
-        }
-
         private void button2_Click(object sender, EventArgs e)
         {
+            string kod_price = maskedTextBox4.Text + "." + maskedTextBox3.Text;
+            string kod = maskedTextBox6.Text + "." + maskedTextBox5.Text;
+            Цех_Рецепты.editing = false;
+            Цех_Рецепты.editing_id = 0;
+            string sql = $"UPDATE `recipes` SET `price` = '{sum.ToString().Replace(",", ".")}', `end_price` = '{kod_price}', `quantity` = '{kod}', `unit` = '{comboBox4.Text}' WHERE `ingredient_kode` = '{IdReciepes}';";
+            MySqlCommand command = new MySqlCommand(sql, Conect.connection);
+            Conect.connection.Open();
+            command.ExecuteNonQuery();
+            Conect.connection.Close();
+            Program.Цех_Рецепты.SqlSelect();
+            сancel = true;
+            this.Close();
+        }
+        private void cost_price()
+        {
+            sum = 0;
+            for (int i = 0; i < dataGridView2.Rows.Count; ++i)
+            {
+                sum += Convert.ToDouble(dataGridView2.Rows[i].Cells["Цена"].Value.ToString().Replace(".", ","));
+            }
+            label7.Text = "Общая себестоимость: " + sum.ToString();
+        }
 
+        private void Цех_Создание_рецепта_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (clouse && !сancel)
+            {
+                    var result = MessageBox.Show("Вы не сохранили рецепт!\nУдалить рецепт?", "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (result == DialogResult.Yes)
+                    {
+
+                        string sql;
+                        sql = $"DELETE FROM `raw_materials-recipes` WHERE ingredient = '{IdReciepes}';";
+                        Conect.Modification_Execute(sql);
+                        sql = $"DELETE FROM recipes WHERE ingredient_kode = '{IdReciepes}';";
+                        Conect.Modification_Execute(sql);
+                        Цех_Рецепты.editing = false;
+                        Цех_Рецепты.editing_id = 0;
+                    }
+                    else
+                    {
+                        e.Cancel = true;
+                    }
+                
+            }
+            Цех_Рецепты.editing = false;
+            Цех_Рецепты.editing_id = 0;
+        }
+
+        private void maskedTextBox4_MouseClick(object sender, MouseEventArgs e)
+        {
+            maskedTextBox4.Text = null;
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(comboBox3.Text == "Сырье")
+            {
+                for (int i = 0; i < Conect.ds.Tables["raw_materials_box"].Rows.Count; i++)
+                {
+                    if (Conect.ds.Tables["raw_materials_box"].Rows[i]["Название"].ToString() == comboBox2.Text)
+                        label9.Text = "(" + Conect.ds.Tables["raw_materials_box"].Rows[i]["Единица измерения"].ToString() + ")";
+                }
+            }
+        }
+
+        private void maskedTextBox6_MouseDown(object sender, MouseEventArgs e)
+        {
+            maskedTextBox6.Text = null;
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            Склад_сырья_редактирование_единицы_измерения Склад_сырья_редактирование_единицы_измерения = new Склад_сырья_редактирование_единицы_измерения();
+            Склад_сырья_редактирование_единицы_измерения.Show();
         }
     }
 }

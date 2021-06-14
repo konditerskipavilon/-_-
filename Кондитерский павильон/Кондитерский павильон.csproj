@@ -119,11 +119,41 @@
     <Compile Include="Авторизация.Designer.cs">
       <DependentUpon>Авторизация.cs</DependentUpon>
     </Compile>
+    <Compile Include="Магазин_История_Продаж.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Магазин_История_Продаж.Designer.cs">
+      <DependentUpon>Магазин_История_Продаж.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Магазин_просмотр_чека.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Магазин_просмотр_чека.Designer.cs">
+      <DependentUpon>Магазин_просмотр_чека.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Настройки.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Настройки.Designer.cs">
+      <DependentUpon>Настройки.cs</DependentUpon>
+    </Compile>
     <Compile Include="Производство_создание_торговой_точки.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Производство_создание_торговой_точки.Designer.cs">
       <DependentUpon>Производство_создание_торговой_точки.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Склад_сырья_обновление.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Склад_сырья_обновление.Designer.cs">
+      <DependentUpon>Склад_сырья_обновление.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Склад_сырья_редактирование.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Склад_сырья_редактирование.Designer.cs">
+      <DependentUpon>Склад_сырья_редактирование.cs</DependentUpon>
     </Compile>
     <Compile Include="Склад_сырья_редактирование_единицы_измерения.cs">
       <SubType>Form</SubType>
@@ -241,11 +271,20 @@
     <EmbeddedResource Include="Магазин.resx">
       <DependentUpon>Магазин.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Магазин_История_Продаж.resx">
+      <DependentUpon>Магазин_История_Продаж.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Магазин_Отчёты.resx">
       <DependentUpon>Магазин_Отчёты.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Магазин_Продажа.resx">
       <DependentUpon>Магазин_Продажа.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Магазин_просмотр_чека.resx">
+      <DependentUpon>Магазин_просмотр_чека.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Настройки.resx">
+      <DependentUpon>Настройки.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Производство.resx">
       <DependentUpon>Производство.cs</DependentUpon>
@@ -265,6 +304,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Производство_создание_торговой_точки.resx">
       <DependentUpon>Производство_создание_торговой_точки.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Склад_сырья_обновление.resx">
+      <DependentUpon>Склад_сырья_обновление.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Склад_сырья_редактирование.resx">
+      <DependentUpon>Склад_сырья_редактирование.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Склад_сырья_редактирование_единицы_измерения.resx">
       <DependentUpon>Склад_сырья_редактирование_единицы_измерения.cs</DependentUpon>
@@ -336,6 +381,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\refresh-1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

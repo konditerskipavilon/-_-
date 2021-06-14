@@ -12,6 +12,8 @@ namespace Кондитерский_павильон
         /// Главная точка входа для приложения.
         /// </summary>
         public static Склад_сырья склад_Сырья;
+        public static Цех_Рецепты Цех_Рецепты;
+        public static Цех Цех;
         [STAThread]
 
 
@@ -20,7 +22,7 @@ namespace Кондитерский_павильон
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Цех_Рецепты());
+            Application.Run(new Производство());
         }
     }
 }

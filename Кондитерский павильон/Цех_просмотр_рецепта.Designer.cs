@@ -47,7 +47,7 @@ namespace Кондитерский_павильон
             this.textBox3.Name = "textBox3";
             this.textBox3.ReadOnly = true;
             this.textBox3.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox3.Size = new System.Drawing.Size(431, 142);
+            this.textBox3.Size = new System.Drawing.Size(411, 169);
             this.textBox3.TabIndex = 29;
             // 
             // textBox1
@@ -89,12 +89,13 @@ namespace Кондитерский_павильон
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(221)))), ((int)(((byte)(248)))));
-            this.ClientSize = new System.Drawing.Size(478, 223);
+            this.ClientSize = new System.Drawing.Size(458, 250);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
+            this.MinimumSize = new System.Drawing.Size(224, 196);
             this.Name = "Цех_просмотр_рецепта";
             this.Text = "Цех_просмотр_рецепта";
             this.Load += new System.EventHandler(this.Цех_просмотр_рецепта_Load);

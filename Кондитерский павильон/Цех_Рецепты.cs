@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Кондитерский_павильон
@@ -15,10 +9,14 @@ namespace Кондитерский_павильон
         public Цех_Рецепты()
         {
             InitializeComponent();
+            Program.Цех_Рецепты = this;
         }
-
+        /////////////////////////////////////////
         public static int n = -1;
-
+        public static bool editing = false;
+        public static int editing_id;
+        public static string name;
+        //////////////////////////////////////
         private void button5_Click(object sender, EventArgs e)
         {
             Цех_Создание_рецепта Цех_Создание_рецепта = new Цех_Создание_рецепта();
@@ -27,8 +25,13 @@ namespace Кондитерский_павильон
 
         private void Цех_Рецепты_Load(object sender, EventArgs e)
         {
+            SqlSelect();
+        }
+
+        public void SqlSelect()
+        {
             string sql;
-            sql = "select ingredient_kode as 'Системный номер', name as 'Название', type as 'Тип', description  as 'Описание',price as 'Себестоимость' from recipes;";
+            sql = "select ingredient_kode as 'Системный номер', name as 'Название', type as 'Тип', description  as 'Описание',price as 'Себестоимость', end_price as 'Стоимость с учетом наценки', concat(recipes.quantity,' ', recipes.unit) as 'Получаемое количество продукции.' from recipes;";
 
             Conect.Table_Fill("recipes", sql);
             dataGridView1.DataSource = Conect.ds.Tables["recipes"];
@@ -39,7 +42,8 @@ namespace Кондитерский_павильон
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
 
-        private void button2_Click(object sender, EventArgs e)
+
+            private void button2_Click(object sender, EventArgs e)
         {
             string message;
             try
@@ -58,6 +62,8 @@ namespace Кондитерский_павильон
             sql = "DELETE FROM recipes WHERE ingredient_kode = '" + dataGridView1.Rows[n].Cells["Системный номер"].Value + "';";
             if (Conect.Modification_Execute(sql))
             {
+                sql = "DELETE FROM `raw_materials-recipes` WHERE ingredient = '" + dataGridView1.Rows[n].Cells["Системный номер"].Value + "';";
+                Conect.Modification_Execute(sql);
                 Conect.ds.Tables["recipes"].Rows.RemoveAt(n);
                 dataGridView1.CurrentCell = null;
                 n = -1;
@@ -79,11 +85,10 @@ namespace Кондитерский_павильон
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            try
-            {
+            //if (dataGridView1.CurrentRow.Index != 0)
+            //{
                 n = dataGridView1.CurrentRow.Index;
-            }
-            catch (System.NullReferenceException) { }
+            //}
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -98,6 +103,29 @@ namespace Кондитерский_павильон
             Производство.Show();
 
 
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            editing = true;
+            
+            try
+            {
+                editing_id = Convert.ToInt32(dataGridView1.Rows[n].Cells["Системный номер"].Value);
+                name = dataGridView1.Rows[n].Cells["Название"].Value.ToString();
+                Цех_Создание_рецепта Цех_Создание_рецепта = new Цех_Создание_рецепта();
+                Цех_Создание_рецепта.Show();
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                MessageBox.Show("Не указана редактируемая запись таблицы!", "Ошибка"); return;
+            }
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            SqlSelect();
         }
     }
 }

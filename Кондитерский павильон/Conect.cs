@@ -1,11 +1,17 @@
 ﻿using MySql.Data.MySqlClient;
+using System.Collections.Generic;
 using System.Data;
 
 namespace Кондитерский_павильон
 {
     class Conect
     {
-        public static string myConnectionString = "server=192.168.1.10 ;user=root;database=kondit;password=Qq414213543;";
+        static string ip = Properties.Settings.Default.ip;
+        static string name_bd = Properties.Settings.Default.name_bd;
+        static string user = Properties.Settings.Default.user;
+        static string password = Properties.Settings.Default.password;
+
+        public static string myConnectionString = $"server={ip} ;user={user};database={name_bd};password={password};";
         public static MySqlConnection connection = new MySqlConnection(myConnectionString);
 
         public static DataSet ds = new DataSet();

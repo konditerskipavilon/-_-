@@ -45,6 +45,8 @@ namespace Кондитерский_павильон
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.maskedTextBox4 = new System.Windows.Forms.MaskedTextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button2
@@ -215,10 +217,31 @@ namespace Кондитерский_павильон
             this.maskedTextBox1.Mask = "999999";
             this.maskedTextBox1.Name = "maskedTextBox1";
             this.maskedTextBox1.PromptChar = ' ';
-            this.maskedTextBox1.Size = new System.Drawing.Size(100, 20);
+            this.maskedTextBox1.Size = new System.Drawing.Size(70, 20);
             this.maskedTextBox1.TabIndex = 3;
             this.maskedTextBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.maskedTextBox1_KeyPress);
             this.maskedTextBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.maskedTextBox1_MouseDown);
+            // 
+            // maskedTextBox4
+            // 
+            this.maskedTextBox4.Location = new System.Drawing.Point(154, 89);
+            this.maskedTextBox4.Mask = "999";
+            this.maskedTextBox4.Name = "maskedTextBox4";
+            this.maskedTextBox4.PromptChar = ' ';
+            this.maskedTextBox4.Size = new System.Drawing.Size(24, 20);
+            this.maskedTextBox4.TabIndex = 24;
+            this.maskedTextBox4.Text = "000";
+            // 
+            // label8
+            // 
+            this.label8.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label8.Location = new System.Drawing.Point(146, 93);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(12, 17);
+            this.label8.TabIndex = 25;
+            this.label8.Text = ",";
             // 
             // Склад_сырья_Добавление_на_Склад
             // 
@@ -226,6 +249,7 @@ namespace Кондитерский_павильон
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(221)))), ((int)(((byte)(248)))));
             this.ClientSize = new System.Drawing.Size(463, 198);
+            this.Controls.Add(this.maskedTextBox4);
             this.Controls.Add(this.maskedTextBox3);
             this.Controls.Add(this.maskedTextBox2);
             this.Controls.Add(this.maskedTextBox1);
@@ -242,6 +266,7 @@ namespace Кондитерский_павильон
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label7);
+            this.Controls.Add(this.label8);
             this.MaximumSize = new System.Drawing.Size(479, 237);
             this.MinimumSize = new System.Drawing.Size(479, 237);
             this.Name = "Склад_сырья_Добавление_на_Склад";
@@ -271,5 +296,7 @@ namespace Кондитерский_павильон
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        private System.Windows.Forms.MaskedTextBox maskedTextBox4;
+        private System.Windows.Forms.Label label8;
     }
 }

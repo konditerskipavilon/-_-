@@ -31,6 +31,7 @@ namespace Кондитерский_павильон
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.button2 = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,13 +53,24 @@ namespace Кондитерский_павильон
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(51)))), ((int)(((byte)(187)))));
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(376, 150);
+            this.button2.Location = new System.Drawing.Point(380, 154);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 36);
             this.button2.TabIndex = 9;
             this.button2.Text = "Удалить запись";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(51)))), ((int)(((byte)(187)))));
+            this.panel1.Location = new System.Drawing.Point(9, 8);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(365, 182);
+            this.panel1.TabIndex = 25;
             // 
             // Склад_сырья_история_списаний
             // 
@@ -68,6 +80,7 @@ namespace Кондитерский_павильон
             this.ClientSize = new System.Drawing.Size(463, 198);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.panel1);
             this.MinimumSize = new System.Drawing.Size(479, 237);
             this.Name = "Склад_сырья_история_списаний";
             this.Text = "списание";
@@ -81,5 +94,6 @@ namespace Кондитерский_павильон
         #endregion
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Panel panel1;
     }
 }

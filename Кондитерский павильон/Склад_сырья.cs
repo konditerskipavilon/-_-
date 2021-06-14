@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Кондитерский_павильон
@@ -19,7 +13,7 @@ namespace Кондитерский_павильон
         }
 
         ///////////////////////////////////////////////////
-        public static string name, quantity, unit;
+        public static string name, quantity, unit, price;
         public static int id;
         int n = -1;
         ///////////////////////////////////////////////////
@@ -44,7 +38,7 @@ namespace Кондитерский_павильон
             }
             catch (System.ArgumentOutOfRangeException)
             {
-                MessageBox.Show("Не указана запись таблицы!", "Ошибка");
+                MessageBox.Show("Не указана запись!", "Ошибка");
             }
 
 
@@ -64,10 +58,7 @@ namespace Кондитерский_павильон
 
         public void Sql()
         {
-            string sql;
-            sql = "select id as 'Системный номер', name as 'Название', type as 'Тип',quantity  as 'Количество',unit  as 'Единица измерения', price as 'Цена' from raw_materials where quantity != '0';";
 
-            Conect.Table_Fill("raw_materials", sql);
             dataGridView1.DataSource = Conect.ds.Tables["raw_materials"];
             dataGridView1.Columns["Цена"].DefaultCellStyle.Format = "C2";
             dataGridView1.BackgroundColor = SystemColors.Control;
@@ -76,6 +67,29 @@ namespace Кондитерский_павильон
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Склад_сырья_обновление Склад_сырья_обновление = new Склад_сырья_обновление();
+            Склад_сырья_обновление.Show();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                id = Convert.ToInt32(dataGridView1.Rows[n].Cells["Системный номер"].Value);
+                name = dataGridView1.Rows[n].Cells["Название"].Value.ToString();
+                price = dataGridView1.Rows[n].Cells["Цена"].Value.ToString();
+                Склад_сырья_редактирование Склад_сырья_редактирование = new Склад_сырья_редактирование();
+                Склад_сырья_редактирование.Show();
+
+            }
+            catch (System.ArgumentOutOfRangeException)
+            {
+                MessageBox.Show("Не указана запись !", "Ошибка");
+            }
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)

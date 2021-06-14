@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Кондитерский_павильон
@@ -20,6 +13,11 @@ namespace Кондитерский_павильон
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void Магазин_Отчёты_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

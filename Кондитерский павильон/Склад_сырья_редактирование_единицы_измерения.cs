@@ -1,12 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Кондитерский_павильон
@@ -80,7 +74,6 @@ namespace Кондитерский_павильон
             if (result == DialogResult.No) { return; }
             string sql;
             sql = "DELETE FROM unit WHERE name_unit = '" + dataGridView1.Rows[n].Cells["Название"].Value + "';";
-            Conect.Modification_Execute(sql);
             if (Conect.Modification_Execute(sql))
             {
                 Conect.ds.Tables["unit"].Rows.RemoveAt(n);

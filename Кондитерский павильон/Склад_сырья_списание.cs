@@ -1,12 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Кондитерский_павильон
@@ -26,21 +19,19 @@ namespace Кондитерский_павильон
             textBox4.Text = Склад_сырья.unit;
         }
 
-        public bool delete = true;
-
+        public bool delete;
         private bool Save()
         {
-            string kod;
-            kod = dateTimePicker1.Text +" "+ dateTimePicker2.Text;
+            string kod = dateTimePicker1.Text +" "+ dateTimePicker2.Text;
             string kod2 = kod.Replace(".", "/");
             string sql;
             string masked;
-            masked = maskedTextBox2.Text;
+            masked = maskedTextBox1.Text + "." + maskedTextBox2.Text;
             if(delete == false)
             {
-                masked = Склад_сырья.quantity;
+                masked = Склад_сырья.quantity.Replace(",",".");
             }
-            if (maskedTextBox2.Text != "")
+            if (maskedTextBox1.Text != "")
             {
                 sql = "INSERT INTO `write_off` (`name`, `reason`, `quantity`, `unit`, `time`) VALUES ('" + textBox1.Text + "', '" + textBox3.Text + "', " + masked + ", '" + textBox4.Text + "' , '" + kod2.Replace(":", ".") + "');";
                 MySqlCommand command = new MySqlCommand(sql, Conect.connection);
@@ -67,36 +58,40 @@ namespace Кондитерский_павильон
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (maskedTextBox2.Text != "" && maskedTextBox1.Text != "")
+            if (maskedTextBox1.Text != "" && maskedTextBox2.Text != "")
             {
                 Double a, b;
                 Double kod;
-                a = Convert.ToDouble(maskedTextBox2.Text);
+                a = Convert.ToDouble(maskedTextBox1.Text + "," + maskedTextBox2.Text);
                 b = Convert.ToDouble(Склад_сырья.quantity);
-
+                if (a < b)
+                {
+                    delete = true;
+                }
+                else
+                {
+                    delete = false;
+                }
                 if (Save())
                 {
-                    if (a < b)
+                    if (delete)
                     {
                         string sql;
 
                         kod = b - a;
 
-                        sql = "UPDATE raw_materials SET quantity = " + kod + " WHERE id = " + Склад_сырья.id + ";";
+                        sql = "UPDATE raw_materials SET quantity = " + kod.ToString().Replace(",", ".") + " WHERE id = " + Склад_сырья.id + ";";
                         Conect.Modification_Execute(sql);
-                        //delite
-                        //update
                     }
                     else
                     {
                         string sql;
-                        delete = false;
+                        
                         sql = "UPDATE raw_materials SET quantity = 0 WHERE id = " + Склад_сырья.id + ";";
                         Conect.Modification_Execute(sql);
-                        //delite
                     }
 
-                    Program.склад_Сырья.Sql();
+                    Производство.Sql_raw_materials();
                     this.Close();
                 }
                 else
@@ -112,7 +107,7 @@ namespace Кондитерский_павильон
 
         private void maskedTextBox2_MouseDown(object sender, MouseEventArgs e)
         {
-            maskedTextBox2.Text = null;
+            maskedTextBox1.Text = null;
         }
     }
 }

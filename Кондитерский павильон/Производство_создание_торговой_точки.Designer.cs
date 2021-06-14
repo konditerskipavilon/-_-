@@ -99,6 +99,7 @@ namespace Кондитерский_павильон
             this.MinimumSize = new System.Drawing.Size(311, 200);
             this.Name = "Производство_создание_торговой_точки";
             this.Text = "Производство_создание_торговой_точки";
+            this.Load += new System.EventHandler(this.Производство_создание_торговой_точки_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
