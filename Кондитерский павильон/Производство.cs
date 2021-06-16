@@ -21,25 +21,46 @@ namespace Кондитерский_павильон
         {
             Sql();
             Sql_raw_materials();
-
-        }
-        public static void Message()
-        {
-            MessageBox.Show("Нет соединения с базой данных","Ошибка");
-        }
-
-        public void Sql()
-        {
-            string sql;
-            sql = "select id as 'Системный номер', title as 'Название', Address as 'Адрес'from shop;";
-
-            Conect.Table_Fill("shop", sql);
             dataGridView1.DataSource = Conect.ds.Tables["shop"];
             dataGridView1.BackgroundColor = SystemColors.Control;
             dataGridView1.BorderStyle = BorderStyle.None;
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            if (Авторизация.ueser == "Администратор")
+            {
+                button3.Visible = true;
+                button6.Visible = true;
+                button5.Visible = true;
+            }
+            
+            if (Авторизация.ueser == "Кондитер")
+            {
+                button2.Enabled = false;
+            }
+
+            if (Авторизация.ueser == "Продавец")
+            {
+                button4.Enabled = false;
+                button1.Enabled = false;
+            }
+            string sql;
+            sql = "select ingredient_kode as 'Системный номер', name as 'Название', type as 'Тип', description  as 'Описание',price as 'Себестоимость', end_price as 'Стоимость с учетом наценки', recipes.quantity as 'Получаемое количество продукции' , recipes.unit as 'Ед измерения' from recipes;";
+
+            Conect.Table_Fill("recipes", sql);
+        }
+        public static void Message()
+        {
+            MessageBox.Show("Нет соединения с базой данных","Ошибка");
+        }
+
+        public static void Sql()
+        {
+            string sql;
+            sql = "select id as 'Системный номер', title as 'Название', Address as 'Адрес'from shop;";
+
+            Conect.Table_Fill("shop", sql);
+
 
         }
 
@@ -142,6 +163,16 @@ namespace Кондитерский_павильон
             {
                 MessageBox.Show("Данная точка теализации не может быть удалена т.к. кодержит готовую продукцию.", "Ошибка");
             }
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            Авторизация.ueser = "Администратор";
+
+                button3.Visible = true;
+                button6.Visible = true;
+                button5.Visible = true;
+            textBox1.Text = Авторизация.ueser;
         }
     }
 }

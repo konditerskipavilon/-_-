@@ -46,10 +46,32 @@ namespace Кондитерский_павильон
                 sql = "select * from recipes";
                 Conect.Table_Fill("select_recipes", sql);
 
-                for (int i = 0; i < Conect.ds.Tables["select_recipes"].Rows.Count; i++)
+                    for (int i = 0; i < Conect.ds.Tables["select_recipes"].Rows.Count; i++)
+                    {
+                        if (Conect.ds.Tables["select_recipes"].Rows[i]["name"].ToString() == comboBox1.Text)
+                            recipes = Conect.ds.Tables["select_recipes"].Rows[i]["ingredient_kode"].ToString();
+                    }
+
+                if (comboBox2.Text != "Склад полуфабрикатов")
                 {
-                    if (Conect.ds.Tables["select_recipes"].Rows[i]["name"].ToString() == comboBox1.Text)
-                        recipes = Conect.ds.Tables["select_recipes"].Rows[i]["ingredient_kode"].ToString();
+                    for (int i = 0; i < Conect.ds.Tables["recipes"].Rows.Count; i++)
+                    {
+                        if (Conect.ds.Tables["recipes"].Rows[i]["Системный номер"].ToString() == recipes)
+                            if (Conect.ds.Tables["recipes"].Rows[i]["Получаемое количество продукции"].ToString() == "")
+                            {
+                                MessageBox.Show("Невозможно создать заявку если не указано количество получаемой продукции или если оно равно '0'.", "Ошибка");
+                                return;
+
+                            }
+                            else
+                            {
+                                if (Convert.ToDouble(Conect.ds.Tables["recipes"].Rows[i]["Получаемое количество продукции"]) <= 0)
+                                {
+                                    MessageBox.Show("Невозможно создать заявку если не указано количество получаемой продукции или если оно равно '0'.", "Ошибка");
+                                    return;
+                                }
+                            }
+                    }
                 }
 
                 if (comboBox2.Text == "Склад полуфабрикатов")
@@ -113,7 +135,7 @@ namespace Кондитерский_павильон
             }
             else
             {
-                MessageBox.Show("Поле заполните все поля.", "Ошибка");
+                MessageBox.Show("Заполните все поля.", "Ошибка");
             }
         }
         double sum2;
@@ -196,7 +218,7 @@ namespace Кондитерский_павильон
                                 {
                                     sum2 = -sum2 - sum2;
                                     sum2 = sum2 / 2;
-                                    sql = $"UPDATE `semi_finished_products` SET `quantity` = '{sum2}' WHERE `id` = '{semi_finished_product_id}';";
+                                    sql = $"UPDATE `semi_finished_products` SET `quantity` = '{sum2.ToString().Replace(",",".")}' WHERE `id` = '{semi_finished_product_id}';";
                                     Conect.Modification_Execute(sql);
                                     Conect.ds.Tables["semi_finished_products_p"].Rows[l]["quantity"] = quantity_p;
                                     Conect.ds.Tables["semi_finished_products"].Rows[l]["Количество"] = quantity_p;

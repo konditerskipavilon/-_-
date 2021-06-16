@@ -55,10 +55,11 @@ namespace Кондитерский_павильон
 
         private void button3_Click(object sender, EventArgs e)
         {
+
             double kod = Convert.ToDouble(maskedTextBox1.Text + "," + maskedTextBox2.Text);
             kod += Convert.ToDouble(quantity);
 
-            if (maskedTextBox1.Text != "")
+            if (maskedTextBox1.Text != "" && comboBox1.Text != "")
             {
                 string sql = $"UPDATE `raw_materials` SET `quantity` = '{kod.ToString().Replace(",",".")}' WHERE `id` = '{id}';";
                 MySqlCommand command = new MySqlCommand(sql, Conect.connection);
@@ -70,7 +71,7 @@ namespace Кондитерский_павильон
             }
             else
             {
-                MessageBox.Show("Поле не должно быть пустым", "Ошибка");
+                MessageBox.Show("Поля не должны быть пустыми.", "Ошибка");
             }
         }
 

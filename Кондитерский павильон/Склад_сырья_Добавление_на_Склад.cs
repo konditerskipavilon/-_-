@@ -35,8 +35,25 @@ namespace Кондитерский_павильон
             Склад_сырья_редактирование_единицы_измерения.Show();
         }
 
+        private bool IfNameExists(string name)
+        {
+            Conect.connection.Open();
+            var sql = $"select * from raw_materials where name = '{name}';";
+
+            MySqlCommand command = new MySqlCommand(sql, Conect.connection);
+            var result = command.ExecuteReader().HasRows;
+            Conect.connection.Close();
+            return result;
+        }
+
         private void button2_Click(object sender, EventArgs e)
         {
+            if (IfNameExists(textBox1.Text))
+            {
+                MessageBox.Show("Невозможно добавить запись с именем которое уже существует.","Ошибка");
+                return;
+            }
+
             string kod = null, kod2;
             kod = maskedTextBox2.Text + "." + maskedTextBox3.Text;
             kod2 = maskedTextBox1.Text + "." + maskedTextBox4.Text;
@@ -53,7 +70,6 @@ namespace Кондитерский_павильон
                 }
                 catch (MySql.Data.MySqlClient.MySqlException)
                 {
-                    MessageBox.Show("Невозможно добавить тип с названием которое уже создано, измените название типа.", "Ошибка!");
                     Conect.connection.Close(); return;
                 }
                 Conect.connection.Close();
@@ -62,7 +78,7 @@ namespace Кондитерский_павильон
             }
             else
             {
-                MessageBox.Show("Поле название не должно быть пустым", "Ошибка");
+                MessageBox.Show("Все поля должны быть заполнены.", "Ошибка");
             }
         }
 

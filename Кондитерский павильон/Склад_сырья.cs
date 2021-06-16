@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace Кондитерский_павильон
 {
@@ -54,6 +56,16 @@ namespace Кондитерский_павильон
         public void Склад_сырья_Load(object sender, EventArgs e)
         {
             Sql();
+
+            comboBox1.Items.Clear();
+            for (int i = 0; i < Conect.ds.Tables["raw_materials"].Rows.Count; i++)
+            {
+                comboBox1.Items.Add(Conect.ds.Tables["raw_materials"].Rows[i]["Тип"].ToString());
+            }
+            object[] items = comboBox1.Items.OfType<String>().Distinct().ToArray();
+            comboBox1.Items.Clear();
+            comboBox1.Items.AddRange(items);
+
         }
 
         public void Sql()
@@ -73,6 +85,59 @@ namespace Кондитерский_павильон
         {
             Склад_сырья_обновление Склад_сырья_обновление = new Склад_сырья_обновление();
             Склад_сырья_обновление.Show();
+        }
+
+        private void textBox1_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (textBox1.Text == "")
+            {
+                Conect.ds.Tables["raw_materials"].DefaultView.RowFilter = "";
+                dataGridView1.CurrentCell = null;
+            }
+            else
+            {
+                Conect.ds.Tables["raw_materials"].DefaultView.RowFilter = $"Название Like '%" + textBox1.Text + "%'";
+                dataGridView1.CurrentCell = null;
+
+            }
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+                Conect.ds.Tables["raw_materials"].DefaultView.RowFilter = $"Тип = '" + comboBox1.Text + "'";
+                dataGridView1.CurrentCell = null;
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            progressBar1.Maximum = dataGridView1.Rows.Count;
+            progressBar1.Visible = true;
+            Excel.Application excel = new Excel.Application();
+            Excel.Workbook workbook = excel.Workbooks.Add();
+            Excel.Worksheet worksheet = workbook.ActiveSheet;
+
+            for (int i = 1, l = 2; i < dataGridView1.RowCount + 1; i++, l++)
+            {
+                for (int j = 1; j < dataGridView1.ColumnCount + 1; j++)
+                {
+                    worksheet.Rows[l].Columns[j] = dataGridView1.Rows[i - 1].Cells[j - 1].Value;
+                    progressBar1.Value = i;
+                }
+            }
+            worksheet.Cells[1, 1] = "№";
+            worksheet.Cells[1, 2] = "Название";
+            worksheet.Cells[1, 3] = "Тип";
+            worksheet.Cells[1, 4] = "Количество";
+            worksheet.Cells[1, 5] = "Ед";
+            worksheet.Cells[1, 6] = "Цена";
+            worksheet.Columns[1].ColumnWidth = 5;
+            worksheet.Columns[2].ColumnWidth = 30;
+            worksheet.Columns[3].ColumnWidth = 20;
+            worksheet.Columns[4].ColumnWidth = 25;
+            worksheet.Columns[5].ColumnWidth = 5;
+            worksheet.Columns[6].ColumnWidth = 10;
+            excel.Visible = true;
+            progressBar1.Visible = false;
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -105,6 +170,8 @@ namespace Кондитерский_павильон
         {
             dataGridView1.AutoResizeColumns();
             dataGridView1.CurrentCell = null;
+
+
         }
     }
 }

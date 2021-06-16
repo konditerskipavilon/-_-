@@ -142,7 +142,7 @@ namespace Кондитерский_павильон
             this.groupBox2.Size = new System.Drawing.Size(329, 144);
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Существющие типы";
+            this.groupBox2.Text = "Существующие типы";
             // 
             // panel1
             // 
@@ -165,7 +165,7 @@ namespace Кондитерский_павильон
             this.Controls.Add(this.groupBox1);
             this.MinimumSize = new System.Drawing.Size(624, 207);
             this.Name = "Склад_сырья_типы";
-            this.Text = "Склад_сырья_добавление_типа";
+            this.Text = "Типы";
             this.Activated += new System.EventHandler(this.Склад_сырья_типы_Activated);
             this.Load += new System.EventHandler(this.Склад_сырья_типы_Load);
             this.groupBox1.ResumeLayout(false);

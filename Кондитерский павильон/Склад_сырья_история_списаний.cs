@@ -25,6 +25,10 @@ namespace Кондитерский_павильон
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            if(Авторизация.ueser == "Администратор")
+            {
+                button2.Visible = true;
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -32,7 +36,7 @@ namespace Кондитерский_павильон
             string message;
             try
             {
-                message = "Вы точно хотите запись с cистемным номеом " + dataGridView1.Rows[n].Cells["Системный номер"].Value + "?";
+                message = "Вы точно хотите запись с cистемным номером " + dataGridView1.Rows[n].Cells["Системный номер"].Value + "?";
             }
             catch (ArgumentOutOfRangeException)
             {
@@ -53,7 +57,7 @@ namespace Кондитерский_павильон
             }
             else
             {
-                MessageBox.Show("№№№№№№", "Ошибка");
+                MessageBox.Show("Ошибка.", "Ошибка");
             }
         }
 

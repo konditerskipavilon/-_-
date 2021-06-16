@@ -59,6 +59,7 @@ namespace Кондитерский_павильон
             this.button2.TabIndex = 9;
             this.button2.Text = "Удалить запись";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Visible = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // panel1
@@ -83,7 +84,7 @@ namespace Кондитерский_павильон
             this.Controls.Add(this.panel1);
             this.MinimumSize = new System.Drawing.Size(479, 237);
             this.Name = "Склад_сырья_история_списаний";
-            this.Text = "списание";
+            this.Text = "История списаний";
             this.Activated += new System.EventHandler(this.Склад_сырья_история_списаний_Activated);
             this.Load += new System.EventHandler(this.склад_сырья_списание_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

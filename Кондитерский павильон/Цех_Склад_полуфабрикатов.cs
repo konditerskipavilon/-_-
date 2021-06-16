@@ -25,7 +25,6 @@ namespace Кондитерский_павильон
             dataGridView1.DataSource = Conect.ds.Tables["semi_finished_products"];
             dataGridView1.BackgroundColor = SystemColors.Control;
             dataGridView1.BorderStyle = BorderStyle.None;
-            dataGridView1.Columns[5].Visible = false;
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -34,7 +33,7 @@ namespace Кондитерский_павильон
         public static void SqlSelect()
         {
             string sql;
-            sql = "select semi_finished_products.id as 'Системный номер', concat('(', recipes.ingredient_kode ,') ', recipes.name) as '(Номер) Название рецепта', recipes.type as 'Тип рецепта', semi_finished_products.quantity as 'Количество', concat(recipes.quantity,' ', recipes.unit) as 'Получаемое количество за 1 единицу.', semi_finished_products.data as 'Дата' from semi_finished_products inner join recipes on recipes.ingredient_kode = semi_finished_products.recipes_id;";
+            sql = "select semi_finished_products.id as 'Системный номер', concat('(', recipes.ingredient_kode ,') ', recipes.name) as '(Номер) Название рецепта', recipes.type as 'Тип рецепта', semi_finished_products.quantity as 'Количество', concat(recipes.quantity,' ', recipes.unit) as 'Получаемое количество за 1 единицу', semi_finished_products.data as 'Дата' from semi_finished_products inner join recipes on recipes.ingredient_kode = semi_finished_products.recipes_id;";
 
             Conect.Table_Fill("semi_finished_products", sql);
         }

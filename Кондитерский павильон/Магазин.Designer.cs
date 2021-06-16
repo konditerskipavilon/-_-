@@ -48,7 +48,7 @@ namespace Кондитерский_павильон
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Location = new System.Drawing.Point(-2, -46);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(173, 495);
+            this.groupBox1.Size = new System.Drawing.Size(173, 572);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
@@ -73,7 +73,7 @@ namespace Кондитерский_павильон
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(155, 38);
             this.button2.TabIndex = 4;
-            this.button2.Text = "Отчёты";
+            this.button2.Text = "Отчет";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -97,7 +97,7 @@ namespace Кондитерский_павильон
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(221)))), ((int)(((byte)(248)))));
             this.panel1.Location = new System.Drawing.Point(167, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(629, 447);
+            this.panel1.Size = new System.Drawing.Size(930, 524);
             this.panel1.TabIndex = 2;
             // 
             // panel2
@@ -107,18 +107,18 @@ namespace Кондитерский_павильон
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(51)))), ((int)(((byte)(187)))));
             this.panel2.Location = new System.Drawing.Point(164, -3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(5, 452);
+            this.panel2.Size = new System.Drawing.Size(5, 529);
             this.panel2.TabIndex = 0;
             // 
             // Магазин
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(796, 447);
+            this.ClientSize = new System.Drawing.Size(1097, 524);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox1);
-            this.MinimumSize = new System.Drawing.Size(812, 486);
+            this.MinimumSize = new System.Drawing.Size(1113, 563);
             this.Name = "Магазин";
             this.Load += new System.EventHandler(this.Магазин_Load);
             this.groupBox1.ResumeLayout(false);

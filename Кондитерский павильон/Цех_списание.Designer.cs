@@ -144,7 +144,7 @@ namespace Кондитерский_павильон
             this.MaximumSize = new System.Drawing.Size(383, 169);
             this.MinimumSize = new System.Drawing.Size(383, 169);
             this.Name = "Цех_списание";
-            this.Text = "Цех_списание";
+            this.Text = "Списание";
             this.Load += new System.EventHandler(this.Цех_списание_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

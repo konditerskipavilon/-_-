@@ -186,7 +186,7 @@ namespace Кондитерский_павильон
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(221)))), ((int)(((byte)(248)))));
-            this.ClientSize = new System.Drawing.Size(405, 169);
+            this.ClientSize = new System.Drawing.Size(347, 165);
             this.Controls.Add(this.maskedTextBox3);
             this.Controls.Add(this.maskedTextBox2);
             this.Controls.Add(this.button1);
@@ -201,8 +201,10 @@ namespace Кондитерский_павильон
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label7);
+            this.MaximumSize = new System.Drawing.Size(363, 204);
+            this.MinimumSize = new System.Drawing.Size(363, 204);
             this.Name = "Склад_сырья_редактирование";
-            this.Text = "Склад_сырья_редактирование";
+            this.Text = "Редактирование";
             this.Activated += new System.EventHandler(this.Склад_сырья_редактирование_Activated);
             this.Load += new System.EventHandler(this.Склад_сырья_редактирование_Load);
             this.ResumeLayout(false);

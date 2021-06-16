@@ -63,6 +63,10 @@
     <Reference Include="K4os.Hash.xxHash, Version=1.0.6.0, Culture=neutral, PublicKeyToken=32cd54395057cec3, processorArchitecture=MSIL">
       <HintPath>..\packages\K4os.Hash.xxHash.1.0.6\lib\net45\K4os.Hash.xxHash.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="MySql.Data, Version=8.0.25.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <HintPath>..\packages\MySql.Data.8.0.25\lib\net452\MySql.Data.dll</HintPath>
     </Reference>
@@ -130,6 +134,12 @@
     </Compile>
     <Compile Include="Магазин_просмотр_чека.Designer.cs">
       <DependentUpon>Магазин_просмотр_чека.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Магазин_склад_сырья_списание.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Магазин_склад_сырья_списание.Designer.cs">
+      <DependentUpon>Магазин_склад_сырья_списание.cs</DependentUpon>
     </Compile>
     <Compile Include="Настройки.cs">
       <SubType>Form</SubType>
@@ -283,6 +293,9 @@
     <EmbeddedResource Include="Магазин_просмотр_чека.resx">
       <DependentUpon>Магазин_просмотр_чека.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Магазин_склад_сырья_списание.resx">
+      <DependentUpon>Магазин_склад_сырья_списание.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Настройки.resx">
       <DependentUpon>Настройки.cs</DependentUpon>
     </EmbeddedResource>
@@ -384,6 +397,17 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\refresh-1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="ACTIVEXLib">
+      <Guid>{012F24C1-35B0-11D0-BF2D-0000E8D0D146}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

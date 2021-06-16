@@ -31,7 +31,7 @@ namespace Кондитерский_павильон
         public void SqlSelect()
         {
             string sql;
-            sql = "select ingredient_kode as 'Системный номер', name as 'Название', type as 'Тип', description  as 'Описание',price as 'Себестоимость', end_price as 'Стоимость с учетом наценки', concat(recipes.quantity,' ', recipes.unit) as 'Получаемое количество продукции.' from recipes;";
+            sql = "select ingredient_kode as 'Системный номер', name as 'Название', type as 'Тип', description  as 'Описание',price as 'Себестоимость', end_price as 'Стоимость с учетом наценки', recipes.quantity as 'Получаемое количество продукции' , recipes.unit as 'Ед измерения' from recipes;";
 
             Conect.Table_Fill("recipes", sql);
             dataGridView1.DataSource = Conect.ds.Tables["recipes"];

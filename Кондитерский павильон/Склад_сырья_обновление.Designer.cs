@@ -148,8 +148,10 @@ namespace Кондитерский_павильон
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.button3);
+            this.MaximumSize = new System.Drawing.Size(478, 175);
+            this.MinimumSize = new System.Drawing.Size(478, 175);
             this.Name = "Склад_сырья_обновление";
-            this.Text = "Склад_сырья_обновление";
+            this.Text = "Обновление";
             this.Load += new System.EventHandler(this.Склад_сырья_обновление_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

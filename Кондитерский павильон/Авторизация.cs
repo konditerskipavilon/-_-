@@ -30,6 +30,7 @@ namespace Кондитерский_павильон
 
         private void button3_Click(object sender, EventArgs e)
         {
+
             string sql;
             MySqlCommand command;
             MySqlDataReader datrReader;
@@ -39,11 +40,12 @@ namespace Кондитерский_павильон
             command = new MySqlCommand(sql, Conect.connection);
             datrReader = command.ExecuteReader();
             datrReader.Read();
+            
 
             if (comboBox1.Text != "" && textBox1.Text == datrReader["password"].ToString())
             {
                 Conect.connection.Close();
-                comboBox1.Text = ueser;//Для прав
+                ueser = comboBox1.Text;
                 Hide();
                 Производство Производство = new Производство(); Производство.ShowDialog();
                 Close();

@@ -13,6 +13,7 @@ namespace Кондитерский_павильон
             Program.Цех = this;
         }
         int n = -1;
+        double price, end_price, end_quantity;
         private void Цех_Load(object sender, EventArgs e)
         {
             SqlSelect();
@@ -26,6 +27,11 @@ namespace Кондитерский_павильон
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            if (Авторизация.ueser == "Администратор")
+            {
+                button2.Visible = true;
+
+            }
         }
 
         public void SqlSelect()
@@ -39,6 +45,10 @@ namespace Кондитерский_павильон
             sql = "select semi_finished_products.id as 'Системный номер', concat('(', recipes.ingredient_kode ,') ', recipes.name) as '(Номер) Название рецепта', recipes.type as 'Тип рецепта', semi_finished_products.quantity as 'Количество', concat(recipes.quantity,' ', recipes.unit) as 'Получаемое количество за 1 единицу.', semi_finished_products.data as 'Дата' from semi_finished_products inner join recipes on recipes.ingredient_kode = semi_finished_products.recipes_id;";
 
             Conect.Table_Fill("semi_finished_products", sql);
+
+            sql = "select ingredient_kode as 'Системный номер', name as 'Название', type as 'Тип', description  as 'Описание',price as 'Себестоимость', end_price as 'Стоимость с учетом наценки', recipes.quantity as 'Получаемое количество продукции' , recipes.unit as 'Ед измерения' from recipes;";
+
+            Conect.Table_Fill("recipes", sql);
 
         }
 
@@ -71,6 +81,8 @@ namespace Кондитерский_павильон
           "inner join raw_materials on raw_materials.id = `raw_materials-recipes`.raw_materials_id; ";
 
             Conect.Table_Fill("raw_materials-recipes", sql);
+
+
 
         }
 
@@ -107,18 +119,17 @@ namespace Кондитерский_павильон
             MessageBoxButtons buttons = MessageBoxButtons.YesNo;
             DialogResult result = MessageBox.Show(message, caption, buttons);
             if (result == DialogResult.No) { return; }
-
             if(dataGridView1.Rows[n].Cells["Состояние"].Value.ToString() == "Достаточно сырья")
             {
                 string sem_finished_product = dataGridView1.Rows[n].Cells["sem_finished_product"].Value.ToString();
                 string shop_id = dataGridView1.Rows[n].Cells["destination_store"].Value.ToString();
                 string recepes_id = dataGridView1.Rows[n].Cells[9].Value.ToString();
-                string quantity = dataGridView1.Rows[n].Cells["Количество"].Value.ToString();
+                double quantity = Convert.ToDouble(dataGridView1.Rows[n].Cells["Количество"].Value);
 
                 string sql;
                 if(sem_finished_product == "1")
                 {
-                    sql = $"INSERT INTO `semi_finished_products` (`recipes_id`, `quantity`) VALUES ('{recepes_id}', '{quantity.Replace(",",".")}');";
+                    sql = $"INSERT INTO `semi_finished_products` (`recipes_id`, `quantity`) VALUES ('{recepes_id}', '{quantity.ToString().Replace(",",".")}');";
                     MySqlCommand command = new MySqlCommand(sql, Conect.connection);
                     Conect.connection.Open();
                     try
@@ -136,7 +147,29 @@ namespace Кондитерский_павильон
                 }
                 else
                 {
-                    sql = $"INSERT INTO `finished_products` (`shop_id`, `recipes_id`, `quantity`) VALUES ('{shop_id}', '{recepes_id}', '{quantity.Replace(",", ".")}');";
+                    for (int i = 0; i < Conect.ds.Tables["recipes"].Rows.Count; i++)
+                    {
+                        if (Conect.ds.Tables["recipes"].Rows[i]["Системный номер"].ToString() == recepes_id)
+                            quantity *= Convert.ToDouble(Conect.ds.Tables["recipes"].Rows[i]["Получаемое количество продукции"]);
+                    }
+                    for (int i = 0; i < Conect.ds.Tables["recipes"].Rows.Count; i++)
+                    {
+                        if (Conect.ds.Tables["recipes"].Rows[i]["Системный номер"].ToString() == recepes_id)
+                            price = Convert.ToDouble(Conect.ds.Tables["recipes"].Rows[i]["Себестоимость"]);
+                    }
+                    for (int i = 0; i < Conect.ds.Tables["recipes"].Rows.Count; i++)
+                    {
+                        if (Conect.ds.Tables["recipes"].Rows[i]["Системный номер"].ToString() == recepes_id)
+                            end_price = Convert.ToDouble(Conect.ds.Tables["recipes"].Rows[i]["Стоимость с учетом наценки"]);
+                    }
+                    for (int i = 0; i < Conect.ds.Tables["recipes"].Rows.Count; i++)
+                    {
+                        if (Conect.ds.Tables["recipes"].Rows[i]["Системный номер"].ToString() == recepes_id)
+                            end_quantity = Convert.ToDouble(Conect.ds.Tables["recipes"].Rows[i]["Получаемое количество продукции"]);
+                    }
+                    price = price / end_quantity;
+                    end_price = end_price / end_quantity;
+                    sql = $"INSERT INTO `finished_products` (`shop_id`, `recipes_id`, `quantity`, `price`,`end_price`) VALUES ('{shop_id}', '{recepes_id}', '{quantity.ToString().Replace(",", ".")}', '{price.ToString().Replace(",", ".")}' , '{end_price.ToString().Replace(",", ".")}');";
                     MySqlCommand command = new MySqlCommand(sql, Conect.connection);
                     Conect.connection.Open();
                     try
@@ -218,5 +251,9 @@ namespace Кондитерский_павильон
             dataGridView1.CurrentCell = null;
         }
 
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -50,6 +50,7 @@ namespace Кондитерский_павильон
                     Conect.connection.Close(); return;
                 }
                 Conect.connection.Close();
+                Производство.Sql();
                 this.Close();
             }
             else

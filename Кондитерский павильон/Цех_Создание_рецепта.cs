@@ -38,6 +38,7 @@ namespace Кондитерский_павильон
                 IdReciepes = 0;
                 groupBox2.Visible = false;
             }
+            cost_price();
         }
 
         private bool IfNameExists(string name)
@@ -56,7 +57,7 @@ namespace Кондитерский_павильон
 
             if (IfNameExists(textBox1.Text))
             {
-                MessageBox.Show("Невозможно добавить технологическую карту с названием которое уже создано, измените название.", "Ошибка!");
+                MessageBox.Show("Невозможно добавить технологическую карту с уже использующимся названием, измените название.", "Ошибка!");
                 return;
             }
 
@@ -95,7 +96,7 @@ namespace Кондитерский_павильон
             }
             else
             {
-                MessageBox.Show("Поле название не должно быть пустым", "Ошибка");
+                MessageBox.Show("Тип не должен быть пустым", "Ошибка");
             }
 
         }
@@ -224,6 +225,7 @@ namespace Кондитерский_павильон
         private void button3_Click(object sender, EventArgs e)
         {
             Delete_all();
+            cost_price();
         }
 
         private void Delete_all()
@@ -249,7 +251,6 @@ namespace Кондитерский_павильон
                 dataGridView2.AutoResizeColumns();
                 dataGridView2.CurrentCell = null;
                 n = -1;
-                cost_price();
             }
 
         }
@@ -277,13 +278,13 @@ namespace Кондитерский_павильон
                 dataGridView2.AutoResizeColumns();
                 dataGridView2.CurrentCell = null;
                 n = -1;
-                cost_price();
                 Цех.Sql_raw_materials_recipes();
             }
             else
             {
                 MessageBox.Show("Данный  уже используется.  Для удаления, удалите все существующие записи использующие данный параметр", "Ошибка");
             }
+            cost_price();
         }
 
         private void Цех_Создание_рецепта_Activated(object sender, EventArgs e)
@@ -392,6 +393,7 @@ namespace Кондитерский_павильон
         {
             Склад_сырья_редактирование_единицы_измерения Склад_сырья_редактирование_единицы_измерения = new Склад_сырья_редактирование_единицы_измерения();
             Склад_сырья_редактирование_единицы_измерения.Show();
+            cost_price();
         }
     }
 }

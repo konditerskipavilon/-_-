@@ -97,7 +97,7 @@ namespace Кондитерский_павильон
             this.Controls.Add(this.label2);
             this.MinimumSize = new System.Drawing.Size(224, 196);
             this.Name = "Цех_просмотр_рецепта";
-            this.Text = "Цех_просмотр_рецепта";
+            this.Text = "Просмотр рецепта";
             this.Load += new System.EventHandler(this.Цех_просмотр_рецепта_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

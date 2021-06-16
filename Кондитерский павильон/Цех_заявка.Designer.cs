@@ -183,12 +183,12 @@ namespace Кондитерский_павильон
             this.checkBox1.AutoSize = true;
             this.checkBox1.Checked = true;
             this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox1.Location = new System.Drawing.Point(12, 3);
+            this.checkBox1.Location = new System.Drawing.Point(4, 3);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(559, 17);
+            this.checkBox1.Size = new System.Drawing.Size(562, 17);
             this.checkBox1.TabIndex = 17;
-            this.checkBox1.Text = "Использовать полуфабрикат для готовой продукции если он есть в наличии на складе " +
-    "полуфабрикатов.";
+            this.checkBox1.Text = "Использовать полуфабрикат для готовой продукции, если он есть в наличии на складе" +
+    " полуфабрикатов.";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // panel1

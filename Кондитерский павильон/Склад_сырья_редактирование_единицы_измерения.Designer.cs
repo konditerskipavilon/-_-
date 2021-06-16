@@ -32,13 +32,13 @@ namespace Кондитерский_павильон
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.button2 = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -57,7 +57,7 @@ namespace Кондитерский_павильон
             this.groupBox2.Size = new System.Drawing.Size(329, 144);
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Существющие ед измерения";
+            this.groupBox2.Text = "Существующие ед измерения";
             // 
             // dataGridView1
             // 
@@ -84,6 +84,17 @@ namespace Кондитерский_павильон
             this.button2.Text = "Удалить";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(51)))), ((int)(((byte)(187)))));
+            this.panel1.Location = new System.Drawing.Point(2, 15);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(244, 127);
+            this.panel1.TabIndex = 25;
             // 
             // label1
             // 
@@ -143,17 +154,6 @@ namespace Кондитерский_павильон
             this.textBox2.Size = new System.Drawing.Size(100, 20);
             this.textBox2.TabIndex = 3;
             // 
-            // panel1
-            // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(51)))), ((int)(((byte)(187)))));
-            this.panel1.Location = new System.Drawing.Point(2, 15);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(244, 127);
-            this.panel1.TabIndex = 25;
-            // 
             // Склад_сырья_редактирование_единицы_измерения
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -162,8 +162,9 @@ namespace Кондитерский_павильон
             this.ClientSize = new System.Drawing.Size(608, 168);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.MinimumSize = new System.Drawing.Size(624, 207);
             this.Name = "Склад_сырья_редактирование_единицы_измерения";
-            this.Text = "Склад_сырья_редактирование_единицы_измерения";
+            this.Text = "Единицы измерения";
             this.Activated += new System.EventHandler(this.Склад_сырья_редактирование_единицы_измерения_Activated);
             this.Load += new System.EventHandler(this.Склад_сырья_редактирование_единицы_измерения_Load);
             this.groupBox2.ResumeLayout(false);

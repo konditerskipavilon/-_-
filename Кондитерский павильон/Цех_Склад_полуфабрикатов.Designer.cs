@@ -98,7 +98,7 @@ namespace Кондитерский_павильон
             this.Controls.Add(this.panel1);
             this.MinimumSize = new System.Drawing.Size(426, 174);
             this.Name = "Цех_Склад_полуфабрикатов";
-            this.Text = "Цех_Склад_полуфабрикатов";
+            this.Text = "Склад полуфабрикатов";
             this.Activated += new System.EventHandler(this.Цех_Склад_полуфабрикатов_Activated);
             this.Load += new System.EventHandler(this.Цех_Склад_полуфабрикатов_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
