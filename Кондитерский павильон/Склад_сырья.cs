@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using Excel = Microsoft.Office.Interop.Excel;
+using Microsoft.Office.Interop.Excel;
 
 namespace Кондитерский_павильон
 {
@@ -56,7 +56,7 @@ namespace Кондитерский_павильон
         public void Склад_сырья_Load(object sender, EventArgs e)
         {
             Sql();
-
+            comboBox1.Text = "Нет фильтра";
             comboBox1.Items.Clear();
             for (int i = 0; i < Conect.ds.Tables["raw_materials"].Rows.Count; i++)
             {
@@ -64,10 +64,11 @@ namespace Кондитерский_павильон
             }
             object[] items = comboBox1.Items.OfType<String>().Distinct().ToArray();
             comboBox1.Items.Clear();
+            comboBox1.Items.Add("Нет фильтра");
             comboBox1.Items.AddRange(items);
 
         }
-
+        #region 1
         public void Sql()
         {
 
@@ -101,20 +102,28 @@ namespace Кондитерский_павильон
 
             }
         }
-
+        #endregion
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (comboBox1.Text == "Нет фильтра")
+            {
+                Conect.ds.Tables["raw_materials"].DefaultView.RowFilter = "";
+                dataGridView1.CurrentCell = null;
+            }
+            else
+            {
                 Conect.ds.Tables["raw_materials"].DefaultView.RowFilter = $"Тип = '" + comboBox1.Text + "'";
                 dataGridView1.CurrentCell = null;
+            }
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
             progressBar1.Maximum = dataGridView1.Rows.Count;
             progressBar1.Visible = true;
-            Excel.Application excel = new Excel.Application();
-            Excel.Workbook workbook = excel.Workbooks.Add();
-            Excel.Worksheet worksheet = workbook.ActiveSheet;
+            Microsoft.Office.Interop.Excel.Application excel = new Microsoft.Office.Interop.Excel.Application();
+            Microsoft.Office.Interop.Excel.Workbook workbook = excel.Workbooks.Add();
+            Microsoft.Office.Interop.Excel.Worksheet worksheet = workbook.ActiveSheet;
 
             for (int i = 1, l = 2; i < dataGridView1.RowCount + 1; i++, l++)
             {

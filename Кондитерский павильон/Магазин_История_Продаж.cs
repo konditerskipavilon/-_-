@@ -18,10 +18,11 @@ namespace Кондитерский_павильон
         {
             
             string sql;
-            sql = $"select id as 'Системный номер', data as 'Дата', price as 'Цена' from cheque where shop_id = '{Производство.id_shop}';";
+            sql = $"select id as 'Системный номер', data as 'Дата', price as 'Себестоимость', end_price as 'Цена' from cheque where shop_id = '{Производство.id_shop}';";
 
             Conect.Table_Fill("cheque", sql);
             dataGridView1.DataSource = Conect.ds.Tables["cheque"];
+            dataGridView1.Columns[2].Visible = false;
             dataGridView1.BackgroundColor = SystemColors.Control;
             dataGridView1.BorderStyle = BorderStyle.None;
             dataGridView1.RowHeadersVisible = false;

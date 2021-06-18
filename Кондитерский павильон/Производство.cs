@@ -165,14 +165,5 @@ namespace Кондитерский_павильон
             }
         }
 
-        private void button7_Click(object sender, EventArgs e)
-        {
-            Авторизация.ueser = "Администратор";
-
-                button3.Visible = true;
-                button6.Visible = true;
-                button5.Visible = true;
-            textBox1.Text = Авторизация.ueser;
-        }
     }
 }

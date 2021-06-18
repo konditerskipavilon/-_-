@@ -22,7 +22,7 @@ namespace Кондитерский_павильон
         public bool delete;
         private bool Save()
         {
-            string kod = dateTimePicker1.Text +" "+ dateTimePicker2.Text;
+            string kod = dateTimePicker1.Text +"."+ dateTimePicker2.Text;
             string kod2 = kod.Replace(".", "/");
             string sql;
             string masked;

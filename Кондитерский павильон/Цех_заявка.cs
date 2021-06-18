@@ -140,6 +140,7 @@ namespace Кондитерский_павильон
         }
         double sum2;
         string id_test2;
+        string produ2;
         private void WriteOff_Update(string id)
         {
 
@@ -183,11 +184,7 @@ namespace Кондитерский_павильон
             {
                  semi_finished_product = Conect.ds.Tables["raw_materials-recipes_where_type_p"].Rows[j]["semi-finished_product"].ToString();
                  quantity = Conect.ds.Tables["raw_materials-recipes_where_type_p"].Rows[j]["Количество"].ToString();
-                if (sum2 == 0 && id_test2 != id)
-                {
-                    sum2 = Convert.ToDouble(kod.Replace(".", ",")) * Convert.ToDouble(quantity);
-                    id_test2 = id;
-                }
+               
                 if (checkBox1.Checked == true)
                 {
                     for (int l = 0; l < Conect.ds.Tables["semi_finished_products_p"].Rows.Count; l++)
@@ -196,8 +193,15 @@ namespace Кондитерский_павильон
                         string semi_finished_product_p = Conect.ds.Tables["semi_finished_products_p"].Rows[l]["recipes_id"].ToString();
                         int semi_finished_product_id = Convert.ToInt32(Conect.ds.Tables["semi_finished_products_p"].Rows[l]["id"]);
 
+                        if (id_test2 != id || semi_finished_product != produ2)
+                        {
+                            sum2 = Convert.ToDouble(kod.Replace(".", ",")) * Convert.ToDouble(quantity);
+                            id_test2 = id;
+                        }
+
                         if (semi_finished_product_p == semi_finished_product)
                         {
+                            produ2 = semi_finished_product;
                             double quantity_p = Convert.ToDouble(Conect.ds.Tables["semi_finished_products_p"].Rows[l]["quantity"]);
                             sum2 = sum2 - quantity_p;
                             if (sum2 > 0)
@@ -305,6 +309,7 @@ namespace Кондитерский_павильон
         }
         double sum;
         string id_test;
+        string produ;
         private void WriteOff_Update_test(string id)
         {
             string sql = "select " +
@@ -343,11 +348,7 @@ namespace Кондитерский_павильон
             {
                 semi_finished_product = Conect.ds.Tables["raw_materials-recipes_where_type_p"].Rows[j]["semi-finished_product"].ToString();
                 quantity = Conect.ds.Tables["raw_materials-recipes_where_type_p"].Rows[j]["Количество"].ToString();
-                if (sum == 0 && id_test != id)
-                {
-                    sum = Convert.ToDouble(kod.Replace(".", ",")) * Convert.ToDouble(quantity);
-                    id_test = id;
-                }
+
                 
                 if (checkBox1.Checked == true)
                 {
@@ -357,16 +358,23 @@ namespace Кондитерский_павильон
                         string semi_finished_product_p = Conect.ds.Tables["semi_finished_products_p"].Rows[l]["recipes_id"].ToString();
                         int semi_finished_product_id = Convert.ToInt32(Conect.ds.Tables["semi_finished_products_p"].Rows[l]["id"]);
 
+                        if (id_test != id || semi_finished_product != produ)
+                        {
+                            sum = Convert.ToDouble(kod.Replace(".", ",")) * Convert.ToDouble(quantity);
+                            id_test = id;
+                        }
+
                         if (semi_finished_product_p == semi_finished_product)
                         {
+                            produ = semi_finished_product;
                             double quantity_p = Convert.ToDouble(Conect.ds.Tables["semi_finished_products_p"].Rows[l]["quantity"]);
                             sum = sum - quantity_p;
                             if (sum > 0)
                             {
                                     Conect.ds.Tables["semi_finished_products_p"].Rows.RemoveAt(l);
-                                      WriteOff_Update_test(id);
-                                MaterialsUpdateTest = false;
-                                        return;
+                                    WriteOff_Update_test(id);
+                                    MaterialsUpdateTest = false;
+                                    return;
                             }
                             else
                             {

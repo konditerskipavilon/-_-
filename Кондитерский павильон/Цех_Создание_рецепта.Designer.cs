@@ -31,6 +31,14 @@ namespace Кондитерский_павильон
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.maskedTextBox5 = new System.Windows.Forms.MaskedTextBox();
+            this.maskedTextBox6 = new System.Windows.Forms.MaskedTextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.button6 = new System.Windows.Forms.Button();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.comboBox4 = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.maskedTextBox3 = new System.Windows.Forms.MaskedTextBox();
@@ -50,6 +58,9 @@ namespace Кондитерский_павильон
             this.button4 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label10 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
@@ -57,17 +68,6 @@ namespace Кондитерский_павильон
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.button6 = new System.Windows.Forms.Button();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.maskedTextBox5 = new System.Windows.Forms.MaskedTextBox();
-            this.maskedTextBox6 = new System.Windows.Forms.MaskedTextBox();
-            this.label13 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -137,10 +137,95 @@ namespace Кондитерский_павильон
             this.groupBox2.Text = "Добавить ингридиент в технологическую карту";
             this.groupBox2.Visible = false;
             // 
+            // label12
+            // 
+            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(428, 255);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(0, 13);
+            this.label12.TabIndex = 43;
+            // 
+            // maskedTextBox5
+            // 
+            this.maskedTextBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.maskedTextBox5.Location = new System.Drawing.Point(407, 242);
+            this.maskedTextBox5.Mask = "999";
+            this.maskedTextBox5.Name = "maskedTextBox5";
+            this.maskedTextBox5.PromptChar = ' ';
+            this.maskedTextBox5.Size = new System.Drawing.Size(25, 20);
+            this.maskedTextBox5.TabIndex = 42;
+            this.maskedTextBox5.Text = "000";
+            // 
+            // maskedTextBox6
+            // 
+            this.maskedTextBox6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.maskedTextBox6.Location = new System.Drawing.Point(342, 242);
+            this.maskedTextBox6.Mask = "99999999999999999999999999999";
+            this.maskedTextBox6.Name = "maskedTextBox6";
+            this.maskedTextBox6.PromptChar = ' ';
+            this.maskedTextBox6.Size = new System.Drawing.Size(59, 20);
+            this.maskedTextBox6.TabIndex = 41;
+            this.maskedTextBox6.MouseDown += new System.Windows.Forms.MouseEventHandler(this.maskedTextBox6_MouseDown);
+            // 
+            // label13
+            // 
+            this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label13.Location = new System.Drawing.Point(397, 241);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(15, 24);
+            this.label13.TabIndex = 44;
+            this.label13.Text = ",";
+            // 
+            // label11
+            // 
+            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(296, 226);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(263, 13);
+            this.label11.TabIndex = 40;
+            this.label11.Text = "Получаемое количество продукта    Ед измерения";
+            // 
+            // button6
+            // 
+            this.button6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(51)))), ((int)(((byte)(187)))));
+            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button6.Location = new System.Drawing.Point(571, 237);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(94, 36);
+            this.button6.TabIndex = 39;
+            this.button6.Text = "Единицы измерения";
+            this.button6.UseVisualStyleBackColor = false;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // panel5
+            // 
+            this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(51)))), ((int)(((byte)(187)))));
+            this.panel5.Location = new System.Drawing.Point(1, 269);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(569, 4);
+            this.panel5.TabIndex = 26;
+            // 
+            // comboBox4
+            // 
+            this.comboBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox4.FormattingEnabled = true;
+            this.comboBox4.Location = new System.Drawing.Point(489, 244);
+            this.comboBox4.Name = "comboBox4";
+            this.comboBox4.Size = new System.Drawing.Size(62, 21);
+            this.comboBox4.TabIndex = 38;
+            // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(288, 69);
+            this.label9.Location = new System.Drawing.Point(270, 69);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(0, 13);
             this.label9.TabIndex = 36;
@@ -313,7 +398,7 @@ namespace Кондитерский_павильон
             // 
             this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(51)))), ((int)(((byte)(187)))));
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Location = new System.Drawing.Point(312, 59);
+            this.button4.Location = new System.Drawing.Point(375, 64);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(137, 23);
             this.button4.TabIndex = 18;
@@ -341,6 +426,35 @@ namespace Кондитерский_павильон
             this.label10.Size = new System.Drawing.Size(15, 24);
             this.label10.TabIndex = 37;
             this.label10.Text = ",";
+            // 
+            // panel2
+            // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(51)))), ((int)(((byte)(187)))));
+            this.panel2.Location = new System.Drawing.Point(279, 210);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(4, 75);
+            this.panel2.TabIndex = 25;
+            // 
+            // panel3
+            // 
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(51)))), ((int)(((byte)(187)))));
+            this.panel3.Location = new System.Drawing.Point(565, 216);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(4, 75);
+            this.panel3.TabIndex = 26;
+            // 
+            // panel4
+            // 
+            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(51)))), ((int)(((byte)(187)))));
+            this.panel4.Location = new System.Drawing.Point(2, 217);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(4, 75);
+            this.panel4.TabIndex = 26;
             // 
             // button1
             // 
@@ -374,6 +488,7 @@ namespace Кондитерский_павильон
             this.textBox3.MaxLength = 8192;
             this.textBox3.Multiline = true;
             this.textBox3.Name = "textBox3";
+            this.textBox3.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBox3.Size = new System.Drawing.Size(538, 194);
             this.textBox3.TabIndex = 24;
             // 
@@ -413,120 +528,6 @@ namespace Кондитерский_павильон
             this.label2.Size = new System.Drawing.Size(26, 13);
             this.label2.TabIndex = 12;
             this.label2.Text = "Тип";
-            // 
-            // comboBox4
-            // 
-            this.comboBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(489, 244);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(62, 21);
-            this.comboBox4.TabIndex = 38;
-            // 
-            // panel2
-            // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(51)))), ((int)(((byte)(187)))));
-            this.panel2.Location = new System.Drawing.Point(279, 210);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(4, 75);
-            this.panel2.TabIndex = 25;
-            // 
-            // panel3
-            // 
-            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(51)))), ((int)(((byte)(187)))));
-            this.panel3.Location = new System.Drawing.Point(565, 216);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(4, 75);
-            this.panel3.TabIndex = 26;
-            // 
-            // panel4
-            // 
-            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(51)))), ((int)(((byte)(187)))));
-            this.panel4.Location = new System.Drawing.Point(2, 217);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(4, 75);
-            this.panel4.TabIndex = 26;
-            // 
-            // panel5
-            // 
-            this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(51)))), ((int)(((byte)(187)))));
-            this.panel5.Location = new System.Drawing.Point(1, 269);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(569, 4);
-            this.panel5.TabIndex = 26;
-            // 
-            // button6
-            // 
-            this.button6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(51)))), ((int)(((byte)(187)))));
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Location = new System.Drawing.Point(571, 237);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(94, 36);
-            this.button6.TabIndex = 39;
-            this.button6.Text = "Единицы измерения";
-            this.button6.UseVisualStyleBackColor = false;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
-            // 
-            // label11
-            // 
-            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(296, 226);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(263, 13);
-            this.label11.TabIndex = 40;
-            this.label11.Text = "Получаемое количество продукта    Ед измерения";
-            // 
-            // label12
-            // 
-            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(428, 255);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(0, 13);
-            this.label12.TabIndex = 43;
-            // 
-            // maskedTextBox5
-            // 
-            this.maskedTextBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.maskedTextBox5.Location = new System.Drawing.Point(407, 242);
-            this.maskedTextBox5.Mask = "999";
-            this.maskedTextBox5.Name = "maskedTextBox5";
-            this.maskedTextBox5.PromptChar = ' ';
-            this.maskedTextBox5.Size = new System.Drawing.Size(25, 20);
-            this.maskedTextBox5.TabIndex = 42;
-            this.maskedTextBox5.Text = "000";
-            // 
-            // maskedTextBox6
-            // 
-            this.maskedTextBox6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.maskedTextBox6.Location = new System.Drawing.Point(342, 242);
-            this.maskedTextBox6.Mask = "99999999999999999999999999999";
-            this.maskedTextBox6.Name = "maskedTextBox6";
-            this.maskedTextBox6.PromptChar = ' ';
-            this.maskedTextBox6.Size = new System.Drawing.Size(59, 20);
-            this.maskedTextBox6.TabIndex = 41;
-            this.maskedTextBox6.MouseDown += new System.Windows.Forms.MouseEventHandler(this.maskedTextBox6_MouseDown);
-            // 
-            // label13
-            // 
-            this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label13.Location = new System.Drawing.Point(397, 241);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(15, 24);
-            this.label13.TabIndex = 44;
-            this.label13.Text = ",";
             // 
             // Цех_Создание_рецепта
             // 

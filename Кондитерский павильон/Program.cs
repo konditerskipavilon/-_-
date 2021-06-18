@@ -22,7 +22,7 @@ namespace Кондитерский_павильон
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Производство());
+            Application.Run(new Авторизация());
         }
     }
 }

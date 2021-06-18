@@ -12,14 +12,9 @@ namespace Кондитерский_павильон
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         int n = -1, m = -1;
         string name, quantity, sql;
-        double price, sum;
+        double price, sum, sum2, price2;
         int id, id_cheque;
         bool test = true;
         
@@ -30,6 +25,7 @@ namespace Кондитерский_павильон
 
             dataGridView2.DataSource = Conect.ds.Tables["cheque_fill"];
             dataGridView2.BackgroundColor = SystemColors.Control;
+            dataGridView2.Columns["Себестоимость"].Visible = false;
             dataGridView2.BorderStyle = BorderStyle.None;
             dataGridView2.RowHeadersVisible = false;
             dataGridView2.AllowUserToAddRows = false;
@@ -51,7 +47,7 @@ namespace Кондитерский_павильон
 
 
 
-            sql = $"select cheque_fill.id as 'Системный номер', recipes.name as 'Название', cheque_fill.quantity as 'Количество', cheque_fill.price as 'Цена' from cheque_fill inner join recipes on recipes.ingredient_kode = cheque_fill.recepes_id where cheque_id = '0';";
+            sql = $"select cheque_fill.id as 'Системный номер', recipes.name as 'Название', cheque_fill.quantity as 'Количество', cheque_fill.price as 'Себестоимость', cheque_fill.end_price as 'Цена' from cheque_fill inner join recipes on recipes.ingredient_kode = cheque_fill.recepes_id where cheque_id = '0';";
 
             Conect.Table_Fill("cheque_fill", sql);
 
@@ -86,6 +82,13 @@ namespace Кондитерский_павильон
                 sum += Convert.ToDouble(dataGridView2.Rows[i].Cells["Цена"].Value.ToString().Replace(".", ","));
             }
             label1.Text = "Итого: " + sum.ToString();
+
+            sum2 = 0;
+            for (int i = 0; i < dataGridView2.Rows.Count; ++i)
+            {
+                sum2 += Convert.ToDouble(dataGridView2.Rows[i].Cells["Себестоимость"].Value.ToString().Replace(".", ","));
+            }
+            
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -128,7 +131,9 @@ namespace Кондитерский_павильон
                     name = dataGridView1.Rows[n].Cells["Название"].Value.ToString();
                     quantity = dataGridView1.Rows[n].Cells["Количество"].Value.ToString();
                     price = Convert.ToDouble(dataGridView1.Rows[n].Cells["Цена"].Value);
+                    price2 = Convert.ToDouble(dataGridView1.Rows[n].Cells["Себестоимость"].Value);
                     price = price * Convert.ToDouble(kod);
+                    price2 = price2 * Convert.ToDouble(kod);
 
                     for (int i = 0; i < Conect.ds.Tables["recipes"].Rows.Count; i++)
                     {
@@ -181,7 +186,7 @@ namespace Кондитерский_павильон
                         return;
                     }
 
-                    sql = $"INSERT INTO `cheque_fill` (`cheque_id`, `recepes_id`, `quantity`, `price`) VALUES ('{id_cheque}', '{id}', '{kod.Replace(",",".")}', '{price.ToString().Replace(",",".")}');";
+                    sql = $"INSERT INTO `cheque_fill` (`cheque_id`, `recepes_id`, `quantity`, `price`, `end_price`) VALUES ('{id_cheque}', '{id}', '{kod.Replace(",",".")}', '{price2.ToString().Replace(",",".")}', '{price.ToString().Replace(",", ".")}');";
                     MySqlCommand command2 = new MySqlCommand(sql, Conect.connection);
                     Conect.connection.Open();
                     try
@@ -194,7 +199,9 @@ namespace Кондитерский_павильон
                         Conect.connection.Close(); return;
                     }
                     Conect.connection.Close();
-                    sql = $"select cheque_fill.id as 'Системный номер', recipes.name as 'Название', cheque_fill.quantity as 'Количество', cheque_fill.price as 'Цена' from cheque_fill inner join recipes on recipes.ingredient_kode = cheque_fill.recepes_id where cheque_id = '{id_cheque}';";
+
+                    sql = $"select cheque_fill.id as 'Системный номер', recipes.name as 'Название', cheque_fill.quantity as 'Количество', cheque_fill.price as 'Себестоимость', cheque_fill.end_price as 'Цена' from cheque_fill inner join recipes on recipes.ingredient_kode = cheque_fill.recepes_id where cheque_id = '{id_cheque}';";
+
                     Conect.Table_Fill("cheque_fill", sql);
                     n = -1;
                 }
@@ -218,22 +225,11 @@ namespace Кондитерский_павильон
             maskedTextBox1.Text = null;
         }
 
-        private void button6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button6_Click_1(object sender, EventArgs e)
-        {
-            sql = $"select finished_products.id as 'Системный номер', recipes.name as 'Название', recipes.type as 'Тип', finished_products.quantity as 'Количество', recipes.unit as 'Единица измерения', finished_products.price as 'Себестоимость' , finished_products.end_price as 'Цена' from finished_products inner join recipes on recipes.ingredient_kode = finished_products.recipes_id where finished_products.shop_id = {Производство.id_shop};";
-
-            Conect.Table_Fill("finished_products", sql);
-        }
-
         private void button4_Click(object sender, EventArgs e)
         {
             test = true;
-            string sql = $"UPDATE `cheque` SET `price` = '{sum.ToString().Replace(",",".")}' WHERE (`id` = '{id_cheque}');";
+            cost_price();
+            string sql = $"UPDATE `cheque` SET `price` = '{sum2.ToString().Replace(",", ".")}', `end_price` = '{sum.ToString().Replace(",", ".")}' WHERE `id` = '{id_cheque}';";
             MySqlCommand command = new MySqlCommand(sql, Conect.connection);
             Conect.connection.Open();
             try

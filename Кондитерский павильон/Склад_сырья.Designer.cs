@@ -50,7 +50,7 @@ namespace Кондитерский_павильон
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(51)))), ((int)(((byte)(187)))));
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(388, 35);
+            this.button2.Location = new System.Drawing.Point(683, 112);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 6;
@@ -63,7 +63,7 @@ namespace Кондитерский_павильон
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(51)))), ((int)(((byte)(187)))));
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(388, 205);
+            this.button1.Location = new System.Drawing.Point(683, 282);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 43);
             this.button1.TabIndex = 5;
@@ -80,7 +80,7 @@ namespace Кондитерский_павильон
             this.dataGridView1.Location = new System.Drawing.Point(12, 38);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(366, 254);
+            this.dataGridView1.Size = new System.Drawing.Size(661, 331);
             this.dataGridView1.TabIndex = 4;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
@@ -89,7 +89,7 @@ namespace Кондитерский_павильон
             this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(51)))), ((int)(((byte)(187)))));
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Location = new System.Drawing.Point(388, 156);
+            this.button3.Location = new System.Drawing.Point(683, 233);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 43);
             this.button3.TabIndex = 7;
@@ -105,7 +105,7 @@ namespace Кондитерский_павильон
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(51)))), ((int)(((byte)(187)))));
             this.panel1.Location = new System.Drawing.Point(8, 34);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(374, 262);
+            this.panel1.Size = new System.Drawing.Size(669, 339);
             this.panel1.TabIndex = 8;
             // 
             // button4
@@ -113,7 +113,7 @@ namespace Кондитерский_павильон
             this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(51)))), ((int)(((byte)(187)))));
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Location = new System.Drawing.Point(388, 107);
+            this.button4.Location = new System.Drawing.Point(683, 184);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 43);
             this.button4.TabIndex = 9;
@@ -126,7 +126,7 @@ namespace Кондитерский_павильон
             this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(51)))), ((int)(((byte)(187)))));
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Location = new System.Drawing.Point(388, 64);
+            this.button5.Location = new System.Drawing.Point(683, 141);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(75, 37);
             this.button5.TabIndex = 10;
@@ -175,7 +175,7 @@ namespace Кондитерский_павильон
             this.button6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(51)))), ((int)(((byte)(187)))));
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Location = new System.Drawing.Point(388, 254);
+            this.button6.Location = new System.Drawing.Point(683, 331);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(75, 43);
             this.button6.TabIndex = 16;
@@ -187,9 +187,9 @@ namespace Кондитерский_павильон
             // 
             this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.progressBar1.Location = new System.Drawing.Point(8, 303);
+            this.progressBar1.Location = new System.Drawing.Point(8, 380);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(455, 18);
+            this.progressBar1.Size = new System.Drawing.Size(750, 18);
             this.progressBar1.TabIndex = 17;
             this.progressBar1.Visible = false;
             // 
@@ -198,7 +198,7 @@ namespace Кондитерский_павильон
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(221)))), ((int)(((byte)(248)))));
-            this.ClientSize = new System.Drawing.Size(471, 328);
+            this.ClientSize = new System.Drawing.Size(766, 405);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.comboBox1);

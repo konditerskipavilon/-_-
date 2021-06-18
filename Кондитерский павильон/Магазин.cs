@@ -12,7 +12,9 @@ namespace Кондитерский_павильон
 
         private void Магазин_Load(object sender, EventArgs e)
         {
-            this.Text = Производство.name_shop;
+            Text = Производство.name_shop;
+            button3.Enabled = false;
+            OpenForm(new Магазин_Склад_готовой_продукции());
         }
 
         private void button1_Click(object sender, EventArgs e)
